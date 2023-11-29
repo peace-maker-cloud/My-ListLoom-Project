@@ -1,0 +1,15 @@
+
+
+👇🏼
+
+
+pm_2305
+
+Pm_2305
+
+
+email validate
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+
+https://lisloommv.onrender.com/users

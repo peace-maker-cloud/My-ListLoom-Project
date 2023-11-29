@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "pm_2305",
+      "fullName": "peace maker",
+      "password": "Pm_2305",
+      "status": "Signed In",
+      "lists": [],
+      "tasks": [
+        {
+          "id": 1,
+          "work": "Learning",
+          "done": false,
+          "date": "2023-11-26"
+        },
+        {
+          "id": 3,
+          "work": "working",
+          "done": false,
+          "date": "2023-11-26"
+        },
+        {
+          "id": 4,
+          "work": "Sitting",
+          "done": false,
+          "date": "2023-11-26"
+        },
+        {
+          "id": 5,
+          "work": "is it done",
+          "done": false,
+          "date": "2023-11-26"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "rv_0305",
+      "fullName": "Vigneshwaran Ravi",
+      "password": "rv@0305.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": []
+    },
+    {
+      "id": 3,
+      "username": "rviji_1977",
+      "fullName": "VIjayalakshmi Ravi",
+      "password": "Viji@1977.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": []
+    }
+  ]
+}
