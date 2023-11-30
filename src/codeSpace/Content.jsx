@@ -1,45 +1,53 @@
-import React, { useEffect } from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
 import { Listwork } from "./workPage/listwork";
 import { Taskwork } from "./workPage/taskwork";
-import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const Content = ({
+  go,
+  setGo,
   userTask,
   fetchErr,
   isLoading,
-  go,
   checks,
   deletes,
+  ipShow,
+  setIpShow,
+  newList,
+  setNewList,
+  newPara,
+  setNewPara,
+  searchList,
+  setSearchList,
+  submitList,
 }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (go === "List") {
-      navigate("/listwork");
-    } else {
-      navigate("/taskwork");
-    }
-  }, [go, navigate]);
-
   return (
     <div className="mx-auto flex flex-col justify-between">
-      <div>
-        <Routes>
-          <Route path="/listwork" element={<Listwork />} />
-          <Route
-            path="/taskwork"
-            element={
-              <Taskwork
-                userTask={userTask}
-                fetchErr={fetchErr}
-                isLoading={isLoading}
-                checks={checks}
-                deletes={deletes}
-              />
-            }
+      {go === "List" ? (
+        <>
+          <Listwork
+            ipShow={ipShow}
+            setIpShow={setIpShow}
+            newList={newList}
+            setNewList={setNewList}
+            newPara={newPara}
+            setNewPara={setNewPara}
+            searchList={searchList}
+            setSearchList={setSearchList}
+            submitList={submitList}
           />
-        </Routes>
-      </div>
+        </>
+      ) : (
+        <>
+          <Taskwork
+            userTask={userTask}
+            fetchErr={fetchErr}
+            isLoading={isLoading}
+            checks={checks}
+            deletes={deletes}
+          />
+        </>
+      )}
     </div>
   );
 };

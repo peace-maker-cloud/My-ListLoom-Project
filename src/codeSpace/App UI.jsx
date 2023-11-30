@@ -1,14 +1,18 @@
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
 import { SignLogiIn } from "./signLogiIn";
 import { Content } from "./Content";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { SearchBar } from "./workPage/taskComponents/searchBar";
 import { Inputlist } from "./workPage/taskComponents/inputlist";
 import { Calendar } from "./workPage/calendar";
+import listloom from "../assets/Images/listloom logo.png";
+import login from "../assets/Images/login logo.png";
+import { AboutApp } from "./About App";
+import { Mainpage } from "./mainpage";
 
 export const AppUI = ({
+  home,
+  setHome,
   show,
   setShow,
   action,
@@ -31,6 +35,12 @@ export const AppUI = ({
   password,
   setPassword,
   greet,
+  visible,
+  setVisible,
+  go,
+  setGo,
+  Cal,
+  setCal,
   handleSubmit,
   handleLogin,
   handleLogout,
@@ -49,197 +59,187 @@ export const AppUI = ({
   setToday,
   selectDate,
   setSelectDate,
+  ipShow,
+  setIpShow,
+  newList,
+  setNewList,
+  newPara,
+  setNewPara,
+  searchList,
+  setSearchList,
+  submitList,
 }) => {
   // codeSpace
-  // for Profile visibility
-  const [visible, setVisible] = useState(false);
-  const [go, setGo] = useState("Task");
 
-  const [Cal, setCal] = useState("hidden");
-  const navigate = useNavigate();
+  const homeSign = useNavigate();
 
   useEffect(() => {
-    if (go === "List") {
-      navigate("/listwork");
+    if (!home) {
+      if (logged === "Signed Out") {
+        homeSign("sign-login");
+      } else {
+        homeSign("/mainpage");
+      }
     } else {
-      navigate("/taskwork");
+      homeSign("/");
     }
-  }, [go, navigate]);
+  }, [logged, homeSign]);
 
   return (
     <div className="heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col justify-between">
       <div className="header ">
         <div className="navbar flex md:justify-between justify-around border-b-2">
-          <img
-            className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2"
-            src="src\assets\Images\listloom logo.png"
-            alt="listloom png"
-          />
-          <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
-            {logged === "Signed Out" ? "HI," : `${greet} ${fullName}`}
-          </h1>
-          <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
-            {logged === "Signed Out" ? (
-              <img
-                className="sign_in_up cursor-auto"
-                src="src\assets\Images\login logo.png"
-                alt=""
-              />
-            ) : (
-              <div
-                onMouseOver={() => {
-                  setVisible(true);
-                }}
-                onMouseLeave={() => {
-                  setVisible(false);
-                }}
-              >
-                <p className="relative md:top-6 top-3 md:text-7xl text-5xl text-center">
-                  {firstLetter.toUpperCase()}
-                </p>
-                {logged === "Signed In" ? (
-                  <div
-                    id="profile"
-                    className={`absolute md:top-[12%] top-[7%] md:left-[72%] left-[70%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
-                      visible ? "" : "hidden"
-                    }`}
-                  >
-                    <p className="text-xl border-b-2 border-b-slate-300">
-                      {username}
-                    </p>
-                    <p
-                      onClick={() => {
-                        handleLogout(username);
-                        setVisible(false);
-                        setAction("Sign In");
-                        setShow("hidden");
-                      }}
-                      className="text-xl border-b-2 border-b-slate-300 hover:text-sky-500"
-                    >
-                      Log Out
-                    </p>
-                  </div>
+          {logged === "Signed Out" || "" ? (
+            <Link
+              onClick={() => {
+                setHome(true);
+              }}
+              className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
+              to="/"
+            >
+              <img src={listloom} alt="listloom png" />
+            </Link>
+          ) : (
+            <img
+              className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2"
+              src={listloom}
+              alt="listloom png"
+            />
+          )}
+
+          {home ? (
+            ""
+          ) : (
+            <>
+              <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
+                {logged === "Signed Out" ? "HI" : `${greet} ${fullName}`}
+              </h1>
+              <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
+                {logged === "Signed Out" ? (
+                  <img className="sign_in_up cursor-auto" src={login} alt="" />
                 ) : (
-                  ""
+                  <div
+                    onMouseOver={() => {
+                      setVisible(true);
+                    }}
+                    onMouseLeave={() => {
+                      setVisible(false);
+                    }}
+                  >
+                    <p className="relative md:top-6 top-3 md:text-7xl text-5xl text-center">
+                      {firstLetter.toUpperCase()}
+                    </p>
+                    {logged === "Signed In" ? (
+                      <div
+                        id="profile"
+                        className={`absolute md:top-[12%] top-[7%] md:left-[72%] left-[70%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
+                          visible ? "" : "hidden"
+                        }`}
+                      >
+                        <p className="text-xl border-b-2 border-b-slate-300">
+                          {username}
+                        </p>
+                        <p
+                          onClick={() => {
+                            handleLogout(username);
+                            setVisible(false);
+                            setAction("Sign In");
+                            setShow("hidden");
+                          }}
+                          className="text-xl border-b-2 border-b-slate-300 hover:text-sky-500"
+                        >
+                          Log Out
+                        </p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
+            </>
+          )}
         </div>
       </div>
 
       {/* Be careful with Content div */}
-      <>
-        {logged === "Signed Out" ? (
-          <div className="bg-slate-300 md:rounded md:min-h-[80%] min-h-[90%] md:p-2 ">
-            <SignLogiIn
-              action={action}
-              setAction={setAction}
-              logged={logged}
-              setLogged={setLogged}
-              fullName={fullName}
-              setFullName={setFullName}
-              username={username}
-              setUsername={setUsername}
-              password={password}
-              setPassword={setPassword}
-              handleSubmit={handleSubmit}
-              handleLogin={handleLogin}
-              credentials={credentials}
-              setCredentials={setCredentials}
-              uservalidate={uservalidate}
-              passvalidate={passvalidate}
-              namevalidate={namevalidate}
-              setUservalidate={setUservalidate}
-              setPassvalidate={setPassvalidate}
-              setNamevalidate={setNamevalidate}
-            />
-          </div>
-        ) : (
-          <>
-            <div>
-              {go === "List" ? (
-                <div className=" list work flex"></div>
-              ) : (
-                <div className="flex md:flex-row flex-col justify-around gap-5 self-center">
-                  <div
-                    onClick={() => {
-                      setShow("");
-                    }}
-                    className="text-center md:mx-0 mx-auto mt-5 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
-                  >
-                    <button>Add new Task</button>
-                  </div>
-                  <div
-                    className={`md:top-[15%] top-[10%] md:left-[20%] left-[5%] absolute md:w-[30%] w-[90%] md:h-[8%] h-[10%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
-                      show === "hidden" ? "hidden" : ""
-                    }`}
-                  >
-                    <Inputlist
-                      newitem={newitem}
-                      setNewitem={setNewitem}
-                      submitted={submitted}
-                      show={show}
-                      setShow={setShow}
-                    />
-                  </div>
-                  <div className=" flex p-1 md:w-4/5 h-fit">
-                    <i
-                      onClick={() => {
-                        setCal("");
-                      }}
-                      className="uil uil-calendar-alt text-4xl md:mt-2 mt-2 md:pt-1 rounded-xl text-black text-center md:w-[6%] w-[10%] p-1 h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
-                    ></i>
-
-                    <SearchBar search={search} setSearch={setSearch} />
-                  </div>
-                  <div
-                    className={`absolute bg-white text-black md:top-[25%] top-[28%] md:left-[25%] p-4 md:w-[25%] h-fit md:h-fit w-[60%] rounded-lg pt-8 transition-all ${
-                      Cal === "hidden" ? "hidden" : ""
-                    } `}
-                  >
-                    <i
-                      onClick={() => setCal("hidden")}
-                      className="uil uil-times text-3xl absolute md:left-[90%] left-[85%] bottom-[88%] transition-all cursor-pointer"
-                    ></i>
-                    <div>
-                      <Calendar
-                        currentMonth={currentMonth}
-                        today={today}
-                        setToday={setToday}
-                        selectDate={selectDate}
-                        setSelectDate={setSelectDate}
-                        setCal={setCal}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="content bg-slate-300 rounded min-h-[65%] overflow-y-auto p-2 hide-scrollbar">
-              <Content
-                userTask={userTask.filter((item) =>
-                  item.work.toLowerCase().includes(search.toLowerCase())
-                )}
-                newitem={newitem}
-                setNewitem={setNewitem}
-                search={search}
-                setSearch={setSearch}
-                fetchErr={fetchErr}
-                isLoading={isLoading}
-                submitted={submitted}
+      <div className="bg-slate-300 md:rounded md:min-h-[80%] min-h-[90%] md:p-2 ">
+        <Routes>
+          <Route
+            path="*"
+            element={<AboutApp setHome={setHome} setAction={setAction} />}
+          />
+          <Route
+            path="/sign-login"
+            element={
+              <SignLogiIn
+                setHome={setHome}
+                action={action}
+                setAction={setAction}
+                logged={logged}
+                setLogged={setLogged}
+                fullName={fullName}
+                setFullName={setFullName}
+                firstLetter={firstLetter}
+                username={username}
+                setUsername={setUsername}
+                password={password}
+                setPassword={setPassword}
+                handleSubmit={handleSubmit}
+                handleLogin={handleLogin}
+                credentials={credentials}
+                setCredentials={setCredentials}
+                uservalidate={uservalidate}
+                passvalidate={passvalidate}
+                namevalidate={namevalidate}
+                setUservalidate={setUservalidate}
+                setPassvalidate={setPassvalidate}
+                setNamevalidate={setNamevalidate}
+              />
+            }
+          />
+          <Route
+            path="/mainpage/*"
+            element={
+              <Mainpage
                 go={go}
                 setGo={setGo}
+                show={show}
+                setShow={setShow}
+                search={search}
+                setSearch={setSearch}
+                newitem={newitem}
+                setNewitem={setNewitem}
+                submitted={submitted}
+                currentMonth={currentMonth}
+                today={today}
+                setToday={setToday}
+                selectDate={selectDate}
+                setSelectDate={setSelectDate}
+                Cal={Cal}
+                setCal={setCal}
+                userTask={userTask}
+                fetchErr={fetchErr}
+                isLoading={isLoading}
                 checks={checks}
                 deletes={deletes}
+                ipShow={ipShow}
+                setIpShow={setIpShow}
+                newList={newList}
+                setNewList={setNewList}
+                newPara={newPara}
+                setNewPara={setNewPara}
+                searchList={searchList}
+                setSearchList={setSearchList}
+                submitList={submitList}
               />
-            </div>
-          </>
-        )}
-      </>
+            }
+          />
+        </Routes>
+      </div>
 
       {/* Be Careful with Content div */}
-      {logged === "Signed In" ? (
+      {logged === "Signed In" && !home ? (
         <div className="footer flex gap-0 justify-center border-t-2 p-2">
           <Link
             to="/listwork"

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
 
 export const SignLogiIn = ({
+  setHome,
   action,
   setAction,
   logged,
@@ -174,6 +176,7 @@ export const SignLogiIn = ({
             onClick={() => {
               handleSubmit({ fullName, username, password });
               handleLogin(username, password);
+              setHome(false);
             }}
           >
             {action}

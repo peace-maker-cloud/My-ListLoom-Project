@@ -1,5 +1,5 @@
 import React from "react";
-import Todolist from "./codeSpace/todolist";
+import { Todolist } from "./codeSpace/TodoList";
 function App() {
   return <Todolist />;
 }

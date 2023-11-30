@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
-
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
 import { AppUI } from "./App UI";
 import Apirequest from "./ApiRequest";
 import dayjs from "dayjs";
-const Todolist = () => {
+export const Todolist = () => {
   const API_URL = "http://localhost:3001/users";
+
+  // App Introduction
+
+  const [home, setHome] = useState(true);
 
   // Listing the task
   const [lists, setLists] = useState([]);
 
-  // inserting new items
-  const [newitem, setNewitem] = useState("");
-  // for searching the task
-  const [search, setSearch] = useState("");
   // errors
   const [fetchErr, setFetcherr] = useState(null);
   // for loading process
   const [isLoading, setIsloading] = useState(true);
   // For Sign in and Sign out process
-  const [action, setAction] = useState("Sign In");
+  const [action, setAction] = useState("");
   // Logged in process
   const [logged, setLogged] = useState("Signed Out");
   // for Profile credentials
@@ -31,9 +31,34 @@ const Todolist = () => {
   const [passvalidate, setPassvalidate] = useState("");
   const [namevalidate, setNamevalidate] = useState("");
 
+  // for Profile visibility
+  const [visible, setVisible] = useState(false);
+  const [go, setGo] = useState("List");
+
+  const [Cal, setCal] = useState("hidden");
+
+  // display parts
+
+  // console.log(logged);
   // Task values
 
   const [show, setShow] = useState("hidden");
+
+  // inserting new items
+  const [newitem, setNewitem] = useState("");
+
+  // for searching the task
+  const [search, setSearch] = useState("");
+
+  // List work values
+
+  const [ipShow, setIpShow] = useState("hidden");
+
+  const [newList, setNewList] = useState("");
+
+  const [newPara, setNewPara] = useState("");
+
+  const [searchList, setSearchList] = useState("");
 
   // API Process and session process
   const USER_SESSION_KEY = "todolist_user";
@@ -61,6 +86,7 @@ const Todolist = () => {
       setFirstLetter(parsedUser.fullName.charAt(0));
       setFullName(parsedUser.fullName);
       setUsername(parsedUser.username);
+      setHome(false);
     }
 
     fetchData();
@@ -90,6 +116,7 @@ const Todolist = () => {
             setPassvalidate("");
             setCredentials("");
             window.location.reload();
+            setHome(false);
           } else {
             setCredentials(`${username} is already registered.`);
             setPassword("");
@@ -162,6 +189,7 @@ const Todolist = () => {
           logUpt(matchedUser.id);
           setUsername(matchedUser.username);
           setCredentials("");
+          setHome(false);
 
           // Store user in session storage
           const userToStore = {
@@ -342,6 +370,55 @@ const Todolist = () => {
 
   // List work process
 
+  const addListItems = async (username, heading, newWork) => {
+    if (action === "Sign In") {
+      // Entry timings
+      const data = dayjs();
+
+      const matchedUser = lists.find((user) => user.username === username);
+      if (matchedUser) {
+        if (username === matchedUser.username) {
+          const userList = matchedUser.lists;
+          const ID = matchedUser.id;
+          const id = userList.length ? userList[userList.length - 1].id + 1 : 1;
+          const addNew = {
+            id,
+            heading,
+            newWork,
+            date: data.format("YYYY-MM-DD"),
+          };
+          const taskLists = [...userList, addNew];
+          const listItems = lists.map((item) =>
+            item.id === ID ? { ...item, lists: taskLists } : item
+          );
+          setLists(listItems);
+          const uptItem = listItems.filter((item) => item.id === ID);
+
+          const uptOpt = {
+            method: "PATCH",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ lists: uptItem[0].lists }),
+          };
+          const urlId = `${API_URL}/${ID}`;
+          const result = await Apirequest(urlId, uptOpt);
+          if (result) setFetcherr(result);
+        }
+      } else {
+        console.log("No user found");
+      }
+    }
+  };
+
+  const submitList = (e) => {
+    e.preventDefault();
+    addListItems(username, newPara, newList);
+    setNewPara("");
+    setNewList("");
+  };
+
+  // console.log(userTask);
   // *******************************************************/
 
   // this code is for to block auto submit while searching
@@ -413,6 +490,8 @@ const Todolist = () => {
   return (
     <div className="mx-auto h-screen bg-gray-200 rounded-md outline-none">
       <AppUI
+        home={home}
+        setHome={setHome}
         show={show}
         setShow={setShow}
         action={action}
@@ -439,6 +518,12 @@ const Todolist = () => {
         password={password}
         setPassword={setPassword}
         greet={greet}
+        visible={visible}
+        setVisible={setVisible}
+        go={go}
+        setGo={setGo}
+        Cal={Cal}
+        setCal={setCal}
         handleSubmit={handleSubmit}
         handleLogin={handleLogin}
         handleLogout={handleLogout}
@@ -458,8 +543,17 @@ const Todolist = () => {
         setToday={setToday}
         selectDate={selectDate}
         setSelectDate={setSelectDate}
+        // Listwork
+        ipShow={ipShow}
+        setIpShow={setIpShow}
+        newList={newList}
+        setNewList={setNewList}
+        newPara={newPara}
+        setNewPara={setNewPara}
+        searchList={searchList}
+        setSearchList={setSearchList}
+        submitList={submitList}
       />
     </div>
   );
 };
-export default Todolist;
