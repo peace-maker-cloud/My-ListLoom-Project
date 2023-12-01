@@ -12,66 +12,30 @@
           "heading": "Listwork",
           "newWork": "Listwork started on 1-12-2023. i hope everything will go well.",
           "date": "01-12-2023"
+        },
+        {
+          "id": 2,
+          "heading": "Is it done",
+          "newWork": "Yes the listwork part is done still some pending is there...",
+          "date": "01-12-2023"
         }
       ],
       "tasks": [
         {
           "id": 1,
-          "work": "Learning",
-          "done": true,
-          "date": "26-11-2023"
+          "work": "second working",
+          "done": false,
+          "date": "01-12-2023"
+        },
+        {
+          "id": 2,
+          "work": "Fourth work",
+          "done": false,
+          "date": "01-12-2023"
         },
         {
           "id": 3,
-          "work": "working",
-          "done": true,
-          "date": "26-11-2023"
-        },
-        {
-          "id": 4,
-          "work": "Sitting",
-          "done": true,
-          "date": "26-11-2023"
-        },
-        {
-          "id": 5,
-          "work": "is it done",
-          "done": true,
-          "date": "26-11-2023"
-        },
-        {
-          "id": 6,
           "work": "Learning",
-          "done": false,
-          "date": "30-11-2023"
-        },
-        {
-          "id": 7,
-          "work": "working",
-          "done": false,
-          "date": "30-11-2023"
-        },
-        {
-          "id": 8,
-          "work": "Fourth work",
-          "done": false,
-          "date": "30-11-2023"
-        },
-        {
-          "id": 9,
-          "work": "working",
-          "done": false,
-          "date": "30-11-2023"
-        },
-        {
-          "id": 10,
-          "work": "Sitting",
-          "done": false,
-          "date": "30-11-2023"
-        },
-        {
-          "id": 12,
-          "work": "FInish task work soon..",
           "done": false,
           "date": "01-12-2023"
         }
