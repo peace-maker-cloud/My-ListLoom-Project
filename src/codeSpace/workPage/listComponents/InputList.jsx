@@ -12,19 +12,19 @@ export const InputList = ({
 }) => {
   const ipListRef = useRef();
   return (
-    <div className={` h-full ${ipShow === "hidden" ? "hidden" : ""}`}>
+    <div className={`h-full ${ipShow === "hidden" ? "hidden" : ""}`}>
       <div>
         <i
           onClick={() => {
             setIpShow("hidden");
           }}
-          className="close text-3xl absolute top-[10%] left-[92%] uil uil-times-square hover:text-red-400"
+          className="close text-3xl absolute top-[3%] left-[90%] uil uil-times-square hover:text-red-400"
         ></i>
       </div>
       <>
-        <div>
+        <div className="mx-auto w-[90%]">
           <input
-            className=" w-[77%] h-10 ml-0 p-4 bg-white text-black text-xl outline-none  border-gray-400 rounded-sm placeholder-gray-400"
+            className=" w-[60%] h-10 ml-0 p-4 bg-white text-black text-xl outline-none  border-gray-400 rounded-sm placeholder-gray-400"
             type="text"
             autoFocus
             name=""
@@ -37,22 +37,24 @@ export const InputList = ({
             }}
           />
         </div>
-        <form onSubmit={submitList} className="w-[90%] flex border-b-2 h-full">
-          <input
-            className="w-[70%] h-full p-3 bg-white text-black text-xl outline-none border-gray-400 rounded-sm placeholder-gray-400 flex flex-grow"
+        <form
+          onSubmit={submitList}
+          className="w-[90%] flex border-b-2 gap-3 h-[70%]"
+        >
+          <textarea
+            className="paragraph w-[70%] h-[90%] p-3 bg-white text-black text-xl outline-none border-gray-400 rounded-sm placeholder-gray-400 flex flex-grow"
             autoFocus
-            ref={ipListRef}
-            type="text"
-            id="addItem"
             required
+            ref={ipListRef}
+            id="addItem"
             placeholder="Body Content.."
             value={newList}
             onChange={(e) => setNewList(e.target.value)}
-            style={{ overflowWrap: "break-word" }}
+            style={{ resize: "none" }}
           />
 
           <button
-            className="mx-auto w-[15%] hover:bg-blue-600 transition duration-300 rounded-md text-black hover:text-white"
+            className="mx-auto w-[15%] h-[10%] hover:bg-blue-600 transition duration-300 rounded-md text-black hover:text-white"
             type="submit"
           >
             <i

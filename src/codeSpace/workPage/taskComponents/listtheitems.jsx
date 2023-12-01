@@ -29,7 +29,7 @@ export const ListTheItems = ({
           <div className="pending tasks md:mx-auto mb-3 md:w-3/5 md:text-2xl text-xl p-2">
             {undoneTasks.length ? (
               <>
-                <h1 className="mx-auto w-2/5 text-center border-b-2 pb-1 font-semibold">
+                <h1 className="mx-auto w-9/12 text-center border-b-2 pb-1 font-semibold">
                   Pending Tasks
                 </h1>
                 <ul className="flex flex-col ">
@@ -78,10 +78,10 @@ export const ListTheItems = ({
 
       {!fetchErr && !isLoading && (
         <>
-          <div className="completed tasks md:mx-auto mb-3 md:w-3/5 md:text-2xl text-xl p-2">
+          <div className="completed tasks mb-3 text-xl p-2">
             {doneTasks.length ? (
               <>
-                <h1 className="mx-auto w-2/5 text-center border-b-2 pb-1 font-semibold">
+                <h1 className="mx-auto w-4/5 text-center border-b-2 pb-1 font-semibold">
                   Completed Tasks
                 </h1>
                 <ul className="flex flex-col ">

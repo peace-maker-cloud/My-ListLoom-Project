@@ -9,7 +9,7 @@ export const Taskwork = ({
   deletes,
 }) => {
   return (
-    <div className="mx-auto md:p-1">
+    <div className="p-1">
       <ListTheItems
         userTask={userTask}
         fetchErr={fetchErr}

@@ -1,10 +1,6 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import { SignLogiIn } from "./signLogiIn";
-import { Content } from "./Content";
-import { SearchBar } from "./workPage/taskComponents/searchBar";
-import { Inputlist } from "./workPage/taskComponents/inputlist";
-import { Calendar } from "./workPage/calendar";
 import listloom from "../assets/Images/listloom logo.png";
 import login from "../assets/Images/login logo.png";
 import { AboutApp } from "./About App";
@@ -86,9 +82,9 @@ export const AppUI = ({
   }, [logged, homeSign]);
 
   return (
-    <div className="heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col justify-between">
+    <div className="heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col justify-start gap-2">
       <div className="header ">
-        <div className="navbar flex md:justify-between justify-around border-b-2">
+        <div className="navbar flex justify-around border-b-2">
           {logged === "Signed Out" || "" ? (
             <Link
               onClick={() => {
@@ -112,7 +108,15 @@ export const AppUI = ({
           ) : (
             <>
               <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
-                {logged === "Signed Out" ? "HI" : `${greet} ${fullName}`}
+                {logged === "Signed Out" ? (
+                  "HI"
+                ) : (
+                  <>
+                    {greet}
+                    <br />
+                    {fullName}
+                  </>
+                )}
               </h1>
               <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
                 {logged === "Signed Out" ? (
@@ -163,7 +167,7 @@ export const AppUI = ({
       </div>
 
       {/* Be careful with Content div */}
-      <div className="bg-slate-300 md:rounded md:min-h-[80%] min-h-[90%] md:p-2 ">
+      <div className="bg-slate-300 min-h-[75%]">
         <Routes>
           <Route
             path="*"

@@ -24,7 +24,7 @@ export const AboutApp = ({ setHome, setAction }) => {
   ];
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -34,11 +34,11 @@ export const AboutApp = ({ setHome, setAction }) => {
   };
 
   return (
-    <div className="h-full">
+    <div className="">
       <div>
         <h1>About the App...</h1>
       </div>
-      <div className=" bg-white h-[55%] overflow-y-auto m-1 p-2 hide-scrollbar scroll-smooth rounded-lg">
+      <div className=" bg-white h-[55%] m-1 p-2 rounded-lg">
         <Slider {...settings}>
           {carouselContent.map((item, index) => (
             <div key={index}>

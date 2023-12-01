@@ -14,7 +14,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::before {
-  @apply content-['✔'] text-blue-500 text-4xl;
+  @apply content-['✔'] text-blue-500 text-xl;
 }
 
 /* index.css */

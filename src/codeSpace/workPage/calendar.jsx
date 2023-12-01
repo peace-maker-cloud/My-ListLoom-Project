@@ -9,6 +9,7 @@ export const Calendar = ({
   selectDate,
   setSelectDate,
   setCal,
+  setSearch,
 }) => {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
 
@@ -86,6 +87,7 @@ export const Calendar = ({
                     )}
                     onClick={() => {
                       setSelectDate(date);
+                      setSearch(date.format("DD-MM-YYYY"));
                       setTimeout(() => setCal("hidden"), 1000);
                     }}
                   >

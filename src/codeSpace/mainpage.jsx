@@ -52,7 +52,7 @@ export const Mainpage = ({
               <button>Add new Task</button>
             </div>
             <div
-              className={`md:top-[15%] top-[10%] md:left-[20%] left-[5%] absolute w-[90%] h-fit p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
+              className={` top-[12%] left-[3%] absolute w-[95%] h-[70%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
                 ipShow === "hidden" ? "hidden" : ""
               }`}
             >
@@ -93,6 +93,7 @@ export const Mainpage = ({
                   selectDate={selectDate}
                   setSelectDate={setSelectDate}
                   setCal={setCal}
+                  setSearch={setSearch}
                 />
               </div>
             </div>
@@ -147,13 +148,14 @@ export const Mainpage = ({
                   selectDate={selectDate}
                   setSelectDate={setSelectDate}
                   setCal={setCal}
+                  setSearch={setSearch}
                 />
               </div>
             </div>
           </div>
         )}
       </div>
-      <div className="content bg-slate-300 rounded min-h-[65%] overflow-y-auto p-2 hide-scrollbar scroll-smooth">
+      <div className="content bg-slate-300 rounded h-[68%] overflow-y-auto p-2 hide-scrollbar scroll-smooth">
         <Content
           go={go}
           setGo={setGo}

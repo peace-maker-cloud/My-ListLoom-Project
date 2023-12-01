@@ -285,7 +285,7 @@ export const Todolist = () => {
             id,
             work,
             done: false,
-            date: data.format("YYYY-MM-DD"),
+            date: data.format("DD-MM-YYYY"),
           };
           const taskItems = [...userTask, addNew];
           const listItems = lists.map((item) =>
@@ -321,6 +321,7 @@ export const Todolist = () => {
       userTask = matchedUser.tasks;
     }
   }
+  // console.log(search);
 
   // work done
   const checks = async (id, userTask) => {
@@ -385,7 +386,7 @@ export const Todolist = () => {
             id,
             heading,
             newWork,
-            date: data.format("YYYY-MM-DD"),
+            date: data.format("DD-MM-YYYY"),
           };
           const taskLists = [...userList, addNew];
           const listItems = lists.map((item) =>
@@ -500,8 +501,8 @@ export const Todolist = () => {
         setLogged={setLogged}
         userTask={userTask.filter(
           (item) =>
-            dayjs(item.date).format("YYYY-MM-DD") ===
-            selectDate.format("YYYY-MM-DD")
+            item.work.toLowerCase().includes(search.toLowerCase()) ||
+            item.date.includes(search)
         )}
         newitem={newitem}
         setNewitem={setNewitem}

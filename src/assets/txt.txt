@@ -13,3 +13,15 @@ email validate
 
 
 https://lisloommv.onrender.com/users
+
+
+
+{userTask.filter(
+          (item) =>
+            dayjs(item.date).format("YYYY-MM-DD") ===
+            selectDate.format("YYYY-MM-DD")
+        )}
+
+        userTask.filter((item) =>
+                  item.work.toLowerCase().includes(search.toLowerCase())
+                )
