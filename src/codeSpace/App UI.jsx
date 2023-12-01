@@ -79,11 +79,27 @@ export const AppUI = ({
         homeSign("/mainpage");
       } else {
         homeSign("sign-login");
+        setCount(0);
+        setShowMessage(false);
       }
     } else {
       homeSign("/");
     }
   }, [logged, homeSign]);
+
+  const [count, setCount] = useState(0);
+  // console.log(count);
+
+  // Delay visibility
+
+  const [showMessage, setShowMessage] = useState(false);
+
+  const LogOutMsg = () => {
+    if (count >= 0) {
+      setShowMessage(true);
+    }
+    // console.log(count, showMessage);
+  };
 
   return (
     <div
@@ -157,6 +173,8 @@ export const AppUI = ({
                             setVisible(false);
                             setAction("Sign In");
                             setShow("hidden");
+                            setCount(count + 1);
+                            LogOutMsg();
                           }}
                           className="text-xl border-b-2 border-b-slate-300 hover:text-sky-500"
                         >
@@ -180,6 +198,11 @@ export const AppUI = ({
           logged === "Signed Out" ? "min-h-[88%]" : "min-h-[75%]"
         } `}
       >
+        {showMessage && (
+          <div className="absolute z-20 p-2 text-center left-[15%] bg-white rounded-md w-3/4 opacity-80 ">
+            <p>Sorry for the delay issue. Please click Log Out. Thank you!</p>
+          </div>
+        )}
         <Routes>
           <Route
             path="*"
