@@ -11,10 +11,6 @@ export const ListTheItems = ({
   const undoneTasks = userTask.filter((task) => !task.done);
   const doneTasks = userTask.filter((task) => task.done);
 
-  const taskEdit = (e) => {
-    console.log(e.target.dataset.value); // Access the value using the data attribute
-  };
-
   return (
     <>
       {isLoading && (
@@ -55,7 +51,6 @@ export const ListTheItems = ({
                           item.done ? { textDecoration: "line-through" } : null
                         }
                         className="text-center"
-                        onDoubleClick={taskEdit}
                       >
                         {item.work}
                       </label>
@@ -107,7 +102,6 @@ export const ListTheItems = ({
                           item.done ? { textDecoration: "line-through" } : null
                         }
                         className="text-center"
-                        onDoubleClick={taskEdit}
                       >
                         {item.work}
                       </label>

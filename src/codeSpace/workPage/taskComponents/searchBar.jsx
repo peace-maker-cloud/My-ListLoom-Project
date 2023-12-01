@@ -5,9 +5,7 @@ export const SearchBar = ({ search, setSearch }) => {
   const clearSearch = () => {
     setSearch("");
   };
-  //  onClick={() => {
-  //         clearSearch();
-  //       }}
+
   return (
     <div className="w-full">
       <div className="eraser text-3xl absolute left-[86%] top-[23.5%] text-gray-400 transition-all">

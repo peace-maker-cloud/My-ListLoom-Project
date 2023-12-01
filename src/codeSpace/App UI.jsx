@@ -55,6 +55,9 @@ export const AppUI = ({
   setToday,
   selectDate,
   setSelectDate,
+  lCal,
+  SetLCal,
+  userList,
   ipShow,
   setIpShow,
   newList,
@@ -64,6 +67,8 @@ export const AppUI = ({
   searchList,
   setSearchList,
   submitList,
+  checkList,
+  deleteList,
 }) => {
   // codeSpace
 
@@ -235,6 +240,9 @@ export const AppUI = ({
                 isLoading={isLoading}
                 checks={checks}
                 deletes={deletes}
+                lCal={lCal}
+                SetLCal={SetLCal}
+                userList={userList}
                 ipShow={ipShow}
                 setIpShow={setIpShow}
                 newList={newList}
@@ -244,6 +252,8 @@ export const AppUI = ({
                 searchList={searchList}
                 setSearchList={setSearchList}
                 submitList={submitList}
+                checkList={checkList}
+                deleteList={deleteList}
               />
             }
           />

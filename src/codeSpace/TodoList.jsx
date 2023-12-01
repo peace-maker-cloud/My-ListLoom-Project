@@ -35,12 +35,11 @@ export const Todolist = () => {
   const [visible, setVisible] = useState(false);
   const [go, setGo] = useState("List");
 
-  const [Cal, setCal] = useState("hidden");
-
   // display parts
 
   // console.log(logged);
   // Task values
+  const [Cal, setCal] = useState("hidden");
 
   const [show, setShow] = useState("hidden");
 
@@ -51,6 +50,7 @@ export const Todolist = () => {
   const [search, setSearch] = useState("");
 
   // List work values
+  const [lCal, SetLCal] = useState("hidden");
 
   const [ipShow, setIpShow] = useState("hidden");
 
@@ -422,6 +422,12 @@ export const Todolist = () => {
       userList = matchedUser.lists;
     }
   }
+  // List process
+
+  const checkList = () => {};
+  const deleteList = () => {};
+
+  // *******************************************************/
 
   const submitList = (e) => {
     e.preventDefault();
@@ -498,6 +504,7 @@ export const Todolist = () => {
   const [today, setToday] = useState(currentMonth);
   const [selectDate, setSelectDate] = useState(currentMonth);
 
+  // console.log(userList);
   //
   return (
     <div className="mx-auto h-screen bg-gray-200 rounded-md outline-none">
@@ -556,6 +563,14 @@ export const Todolist = () => {
         selectDate={selectDate}
         setSelectDate={setSelectDate}
         // Listwork
+        lCal={lCal}
+        SetLCal={SetLCal}
+        userList={userList.filter(
+          (item) =>
+            (item.newPara?.toLowerCase() ?? "").includes(
+              searchList.toLowerCase()
+            ) || (item.date ?? "").includes(searchList)
+        )}
         ipShow={ipShow}
         setIpShow={setIpShow}
         newList={newList}
@@ -565,6 +580,8 @@ export const Todolist = () => {
         searchList={searchList}
         setSearchList={setSearchList}
         submitList={submitList}
+        checkList={checkList}
+        deleteList={deleteList}
       />
     </div>
   );

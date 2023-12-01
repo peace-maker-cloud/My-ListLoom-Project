@@ -11,6 +11,7 @@ export const Content = ({
   isLoading,
   checks,
   deletes,
+  userList,
   ipShow,
   setIpShow,
   newList,
@@ -20,21 +21,19 @@ export const Content = ({
   searchList,
   setSearchList,
   submitList,
+  checkList,
+  deleteList,
 }) => {
   return (
     <div className="mx-auto flex flex-col justify-between">
       {go === "List" ? (
         <>
           <Listwork
-            ipShow={ipShow}
-            setIpShow={setIpShow}
-            newList={newList}
-            setNewList={setNewList}
-            newPara={newPara}
-            setNewPara={setNewPara}
-            searchList={searchList}
-            setSearchList={setSearchList}
-            submitList={submitList}
+            userList={userList}
+            fetchErr={fetchErr}
+            isLoading={isLoading}
+            checkList={checkList}
+            deleteList={deleteList}
           />
         </>
       ) : (

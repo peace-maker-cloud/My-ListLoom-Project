@@ -6,6 +6,7 @@ import { CalendarL } from "./workPage/listComponents/calendarL";
 import { Inputlist } from "./workPage/taskComponents/inputlist";
 import { SearchBar } from "./workPage/taskComponents/searchBar";
 import { InputList } from "./workPage/listComponents/InputList";
+import { Searchlist } from "./workPage/listComponents/Searchlist";
 
 export const Mainpage = ({
   go,
@@ -29,6 +30,9 @@ export const Mainpage = ({
   submitted,
   checks,
   deletes,
+  lCal,
+  SetLCal,
+  userList,
   ipShow,
   setIpShow,
   newList,
@@ -38,27 +42,28 @@ export const Mainpage = ({
   searchList,
   setSearchList,
   submitList,
+  checkList,
+  deleteList,
 }) => {
   return (
     <>
       <div>
         {go === "List" ? (
-          <div className="listwork flex md:flex-row flex-col justify-around gap-5 self-center">
+          <div className="listwork flex md:flex-row flex-col justify-around self-center">
             <div
               onClick={() => {
                 setIpShow("");
               }}
-              className="text-center md:mx-0 mx-auto mt-5 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
+              className="text-center mx-auto m-2 p-2 w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
             >
               <button>Add new Note</button>
             </div>
             <div
-              className={` top-[12%] left-[3%] absolute w-[95%] h-[70%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
+              className={`top-[12%] left-[3%] absolute w-[95%] h-[70%] p-2 bg-slate-200 mx-auto pt-7 rounded-md z-20 ${
                 ipShow === "hidden" ? "hidden" : ""
               }`}
             >
               <InputList
-                ipShow={ipShow}
                 setIpShow={setIpShow}
                 newList={newList}
                 setNewList={setNewList}
@@ -70,19 +75,23 @@ export const Mainpage = ({
             <div className=" flex p-1 md:w-4/5 h-fit">
               <i
                 onClick={() => {
-                  setCal("");
+                  SetLCal("");
                 }}
-                className="uil uil-calendar-alt text-4xl md:mt-2 mt-2 md:pt-1 rounded-xl text-black text-center md:w-[6%] w-[10%] p-1 h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
+                className="uil uil-calendar-alt text-3xl p-1 mt-2 rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
               ></i>
+              <Searchlist
+                searchList={searchList}
+                setSearchList={setSearchList}
+              />
             </div>
             <div
-              className={`absolute bg-white text-black top-[28%] p-4  h-fit w-[60%] rounded-lg pt-8 transition-all ${
+              className={`absolute bg-white text-black top-[20%] p-3 h-fit w-[95%] rounded-lg pt-8 transition-all ${
                 Cal === "hidden" ? "hidden" : ""
               } `}
             >
               <i
-                onClick={() => setCal("hidden")}
-                className="uil uil-times text-3xl absolute left-[85%] bottom-[88%] transition-all cursor-pointer"
+                onClick={() => SetLCal("hidden")}
+                className="uil uil-times text-3xl absolute left-[90%] bottom-[91%] transition-all cursor-pointer"
               ></i>
               <div>
                 <CalendarL
@@ -91,7 +100,7 @@ export const Mainpage = ({
                   setToday={setToday}
                   selectDate={selectDate}
                   setSelectDate={setSelectDate}
-                  setCal={setCal}
+                  setLCal={SetLCal}
                   setSearchList={setSearchList}
                 />
               </div>
@@ -103,7 +112,7 @@ export const Mainpage = ({
               onClick={() => {
                 setShow("");
               }}
-              className="text-center md:mx-0 mx-auto m-2 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
+              className="text-center mx-auto m-2 p-2 w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
             >
               <button>Add new Task</button>
             </div>
@@ -163,6 +172,7 @@ export const Mainpage = ({
           isLoading={isLoading}
           checks={checks}
           deletes={deletes}
+          userList={userList}
           ipShow={ipShow}
           setIpShow={setIpShow}
           newList={newList}
@@ -172,6 +182,8 @@ export const Mainpage = ({
           searchList={searchList}
           setSearchList={setSearchList}
           submitList={submitList}
+          checkList={checkList}
+          deleteList={deleteList}
         />
       </div>
     </>
