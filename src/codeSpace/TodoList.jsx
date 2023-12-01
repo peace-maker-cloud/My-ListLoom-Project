@@ -196,6 +196,7 @@ export const Todolist = () => {
             id: matchedUser.id,
             username: matchedUser.username,
             fullName: matchedUser.fullName,
+            logged: "Signed In",
           };
 
           sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify(userToStore));
@@ -309,6 +310,8 @@ export const Todolist = () => {
       } else {
         console.log("No user found");
       }
+
+      setNewitem("");
     }
   };
 
@@ -376,7 +379,6 @@ export const Todolist = () => {
     if (action === "Sign In") {
       // Entry timings
       const data = dayjs();
-
       const matchedUser = lists.find((user) => user.username === username);
       if (matchedUser) {
         if (username === matchedUser.username) {
@@ -410,6 +412,9 @@ export const Todolist = () => {
       } else {
         console.log("No user found");
       }
+
+      setNewPara("");
+      setNewList("");
     }
   };
 
@@ -424,7 +429,6 @@ export const Todolist = () => {
   }
   // List process
 
-  const checkList = () => {};
   const deleteList = () => {};
 
   // *******************************************************/
@@ -436,14 +440,12 @@ export const Todolist = () => {
     setNewList("");
   };
 
-  // console.log(userTask);
   // *******************************************************/
 
   // this code is for to block auto submit while searching
   const submitted = (e) => {
     e.preventDefault();
     addItems(username, newitem);
-    setNewitem("");
   };
   // End code Space
 
@@ -567,9 +569,8 @@ export const Todolist = () => {
         SetLCal={SetLCal}
         userList={userList.filter(
           (item) =>
-            (item.newPara?.toLowerCase() ?? "").includes(
-              searchList.toLowerCase()
-            ) || (item.date ?? "").includes(searchList)
+            item.heading.toLowerCase().includes(searchList.toLowerCase()) ||
+            item.date.includes(searchList)
         )}
         ipShow={ipShow}
         setIpShow={setIpShow}
@@ -580,7 +581,6 @@ export const Todolist = () => {
         searchList={searchList}
         setSearchList={setSearchList}
         submitList={submitList}
-        checkList={checkList}
         deleteList={deleteList}
       />
     </div>

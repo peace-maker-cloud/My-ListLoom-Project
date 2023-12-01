@@ -18,6 +18,12 @@
           "heading": "Is it done",
           "newWork": "Yes the listwork part is done still some pending is there...",
           "date": "01-12-2023"
+        },
+        {
+          "id": 3,
+          "heading": "List work ",
+          "newWork": "New code updated on 2 dec 2023",
+          "date": "02-12-2023"
         }
       ],
       "tasks": [
@@ -38,6 +44,12 @@
           "work": "Learning",
           "done": false,
           "date": "01-12-2023"
+        },
+        {
+          "id": 4,
+          "work": "new code updated",
+          "done": false,
+          "date": "02-12-2023"
         }
       ]
     },

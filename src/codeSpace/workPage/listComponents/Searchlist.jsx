@@ -5,18 +5,10 @@ export const Searchlist = ({ searchList, setSearchList }) => {
     setSearchList("");
   };
   return (
-    <div className="w-full">
-      <div className="eraser text-3xl absolute left-[86%] top-[24.5%] text-gray-400 transition-all">
-        <i
-          onClick={() => {
-            clearSearch();
-          }}
-          className="uil uil-times-circle"
-        ></i>
-      </div>
+    <div className="w-full flex items-center bg-white rounded-lg">
       <form className="p-1 w-full" onSubmit={(e) => e.preventDefault()}>
         <input
-          className="mt-1 mx-auto w-full h-10 p-3 bg-white text-black text-2xl outline-none border-[1px] border-white rounded-2xl  flex flex-grow"
+          className="mx-auto w-full h-10 p-3 bg-white text-black text-2xl outline-none border-[1px] border-white rounded-2xl  flex flex-grow"
           type="text"
           role="searchBar"
           id=""
@@ -25,6 +17,14 @@ export const Searchlist = ({ searchList, setSearchList }) => {
           onChange={(e) => setSearchList(e.target.value)}
         />
       </form>
+      <div className="eraser text-3xl text-gray-400 transition-all">
+        <i
+          onClick={() => {
+            clearSearch();
+          }}
+          className="uil uil-times-circle"
+        ></i>
+      </div>
     </div>
   );
 };

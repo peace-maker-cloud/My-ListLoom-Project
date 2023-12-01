@@ -67,7 +67,6 @@ export const AppUI = ({
   searchList,
   setSearchList,
   submitList,
-  checkList,
   deleteList,
 }) => {
   // codeSpace
@@ -252,7 +251,6 @@ export const AppUI = ({
                 searchList={searchList}
                 setSearchList={setSearchList}
                 submitList={submitList}
-                checkList={checkList}
                 deleteList={deleteList}
               />
             }

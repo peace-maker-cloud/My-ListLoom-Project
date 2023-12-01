@@ -42,7 +42,6 @@ export const Mainpage = ({
   searchList,
   setSearchList,
   submitList,
-  checkList,
   deleteList,
 }) => {
   return (
@@ -72,7 +71,7 @@ export const Mainpage = ({
                 submitList={submitList}
               />
             </div>
-            <div className=" flex p-1 md:w-4/5 h-fit">
+            <div className=" flex p-1 h-fit">
               <i
                 onClick={() => {
                   SetLCal("");
@@ -86,7 +85,7 @@ export const Mainpage = ({
             </div>
             <div
               className={`absolute bg-white text-black top-[20%] p-3 h-fit w-[95%] rounded-lg pt-8 transition-all ${
-                Cal === "hidden" ? "hidden" : ""
+                lCal === "hidden" ? "hidden" : ""
               } `}
             >
               <i
@@ -129,7 +128,7 @@ export const Mainpage = ({
                 setShow={setShow}
               />
             </div>
-            <div className=" flex p-2 h-fit">
+            <div className=" flex p-1 h-fit">
               <i
                 onClick={() => {
                   setCal("");
@@ -182,7 +181,6 @@ export const Mainpage = ({
           searchList={searchList}
           setSearchList={setSearchList}
           submitList={submitList}
-          checkList={checkList}
           deleteList={deleteList}
         />
       </div>

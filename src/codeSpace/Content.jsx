@@ -21,7 +21,6 @@ export const Content = ({
   searchList,
   setSearchList,
   submitList,
-  checkList,
   deleteList,
 }) => {
   return (
@@ -32,7 +31,6 @@ export const Content = ({
             userList={userList}
             fetchErr={fetchErr}
             isLoading={isLoading}
-            checkList={checkList}
             deleteList={deleteList}
           />
         </>
