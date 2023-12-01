@@ -32,7 +32,7 @@ export const SignLogiIn = ({
 
   return (
     <div>
-      <div className="p-4 mt-32 md:mx-auto bg-slate-200 rounded-md md:w-2/5 text-center h-[75%] flex flex-col justify-between">
+      <div className="p-4 mt-20 md:mx-auto bg-slate-200 rounded-md md:w-2/5 text-center h-[75%] flex flex-col justify-between">
         {/* For Sign In and Out Buttons  */}
         <div>
           <div className="flex justify-between">

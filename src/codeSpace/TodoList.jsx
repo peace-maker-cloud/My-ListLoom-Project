@@ -227,6 +227,7 @@ export const Todolist = () => {
     const result = await Apirequest(urlId, loguptOpt);
     if (result) setFetcherr(result);
   };
+
   // console.log("sign actions", action);
   // Logout Process
   const handleLogout = async (username, logged) => {
@@ -314,14 +315,14 @@ export const Todolist = () => {
   let matchedUser = [];
   let userTask = [];
 
-  if (action === "Sign In") {
+  if (action === "Sign In" || action === "") {
     matchedUser = lists.find((user) => user.username === username);
 
     if (matchedUser) {
       userTask = matchedUser.tasks;
     }
   }
-  // console.log(search);
+  // console.log(typeof search);
 
   // work done
   const checks = async (id, userTask) => {
@@ -411,6 +412,16 @@ export const Todolist = () => {
       }
     }
   };
+
+  let userList = [];
+
+  if (action === "Sign In" || action === "") {
+    matchedUser = lists.find((user) => user.username === username);
+
+    if (matchedUser) {
+      userList = matchedUser.lists;
+    }
+  }
 
   const submitList = (e) => {
     e.preventDefault();

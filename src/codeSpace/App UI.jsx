@@ -71,10 +71,10 @@ export const AppUI = ({
 
   useEffect(() => {
     if (!home) {
-      if (logged === "Signed Out") {
-        homeSign("sign-login");
-      } else {
+      if (logged === "Signed In") {
         homeSign("/mainpage");
+      } else {
+        homeSign("sign-login");
       }
     } else {
       homeSign("/");
@@ -82,10 +82,14 @@ export const AppUI = ({
   }, [logged, homeSign]);
 
   return (
-    <div className="heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col justify-start gap-2">
+    <div
+      className={`heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col ${
+        logged === "Signed Out" ? "justify-start" : "justify-between"
+      }  gap-2`}
+    >
       <div className="header ">
         <div className="navbar flex justify-around border-b-2">
-          {logged === "Signed Out" || "" ? (
+          {logged === "Signed Out" ? (
             <Link
               onClick={() => {
                 setHome(true);
@@ -130,7 +134,7 @@ export const AppUI = ({
                       setVisible(false);
                     }}
                   >
-                    <p className="relative md:top-6 top-3 md:text-7xl text-5xl text-center">
+                    <p className="relative top-2 text-4xl text-center">
                       {firstLetter.toUpperCase()}
                     </p>
                     {logged === "Signed In" ? (
@@ -167,7 +171,11 @@ export const AppUI = ({
       </div>
 
       {/* Be careful with Content div */}
-      <div className="bg-slate-300 min-h-[75%]">
+      <div
+        className={`bg-slate-300 ${
+          logged === "Signed Out" ? "min-h-[88%]" : "min-h-[75%]"
+        } `}
+      >
         <Routes>
           <Route
             path="*"

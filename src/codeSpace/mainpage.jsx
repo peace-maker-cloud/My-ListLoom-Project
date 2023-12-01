@@ -1,7 +1,8 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import { Content } from "./Content";
-import { Calendar } from "./workPage/calendar";
+import { Calendar } from "./workPage/taskComponents/calendar";
+import { CalendarL } from "./workPage/listComponents/calendarL";
 import { Inputlist } from "./workPage/taskComponents/inputlist";
 import { SearchBar } from "./workPage/taskComponents/searchBar";
 import { InputList } from "./workPage/listComponents/InputList";
@@ -49,7 +50,7 @@ export const Mainpage = ({
               }}
               className="text-center md:mx-0 mx-auto mt-5 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
             >
-              <button>Add new Task</button>
+              <button>Add new Note</button>
             </div>
             <div
               className={` top-[12%] left-[3%] absolute w-[95%] h-[70%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
@@ -73,38 +74,36 @@ export const Mainpage = ({
                 }}
                 className="uil uil-calendar-alt text-4xl md:mt-2 mt-2 md:pt-1 rounded-xl text-black text-center md:w-[6%] w-[10%] p-1 h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
               ></i>
-
-              <SearchBar search={search} setSearch={setSearch} />
             </div>
             <div
-              className={`absolute bg-white text-black md:top-[25%] top-[28%] md:left-[25%] p-4 md:w-[25%] h-fit md:h-fit w-[60%] rounded-lg pt-8 transition-all ${
+              className={`absolute bg-white text-black top-[28%] p-4  h-fit w-[60%] rounded-lg pt-8 transition-all ${
                 Cal === "hidden" ? "hidden" : ""
               } `}
             >
               <i
                 onClick={() => setCal("hidden")}
-                className="uil uil-times text-3xl absolute md:left-[90%] left-[85%] bottom-[88%] transition-all cursor-pointer"
+                className="uil uil-times text-3xl absolute left-[85%] bottom-[88%] transition-all cursor-pointer"
               ></i>
               <div>
-                <Calendar
+                <CalendarL
                   currentMonth={currentMonth}
                   today={today}
                   setToday={setToday}
                   selectDate={selectDate}
                   setSelectDate={setSelectDate}
                   setCal={setCal}
-                  setSearch={setSearch}
+                  setSearchList={setSearchList}
                 />
               </div>
             </div>
           </div>
         ) : (
-          <div className="flex md:flex-row flex-col justify-around gap-5 self-center">
+          <div className="flex md:flex-row flex-col justify-around self-center">
             <div
               onClick={() => {
                 setShow("");
               }}
-              className="text-center md:mx-0 mx-auto mt-5 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
+              className="text-center md:mx-0 mx-auto m-2 p-2 md:w-[20%] w-[80%] bg-cyan-700 text-white rounded-md cursor-pointer h-10"
             >
               <button>Add new Task</button>
             </div>
@@ -121,24 +120,24 @@ export const Mainpage = ({
                 setShow={setShow}
               />
             </div>
-            <div className=" flex p-1 md:w-4/5 h-fit">
+            <div className=" flex p-2 h-fit">
               <i
                 onClick={() => {
                   setCal("");
                 }}
-                className="uil uil-calendar-alt text-4xl md:mt-2 mt-2 md:pt-1 rounded-xl text-black text-center md:w-[6%] w-[10%] p-1 h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
+                className="uil uil-calendar-alt text-3xl p-1 mt-2 rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
               ></i>
 
               <SearchBar search={search} setSearch={setSearch} />
             </div>
             <div
-              className={`absolute bg-white text-black md:top-[25%] top-[28%] md:left-[25%] p-4 md:w-[25%] h-fit md:h-fit w-[60%] rounded-lg pt-8 transition-all ${
+              className={`absolute bg-white text-black top-[20%] p-3 h-fit w-[95%] rounded-lg pt-8 transition-all ${
                 Cal === "hidden" ? "hidden" : ""
               } `}
             >
               <i
                 onClick={() => setCal("hidden")}
-                className="uil uil-times text-3xl absolute md:left-[90%] left-[85%] bottom-[88%] transition-all cursor-pointer"
+                className="uil uil-times text-3xl absolute left-[90%] bottom-[91%] transition-all cursor-pointer"
               ></i>
               <div>
                 <Calendar
@@ -155,7 +154,7 @@ export const Mainpage = ({
           </div>
         )}
       </div>
-      <div className="content bg-slate-300 rounded h-[68%] overflow-y-auto p-2 hide-scrollbar scroll-smooth">
+      <div className="content bg-slate-300 rounded h-[73%] overflow-y-auto p-2 hide-scrollbar scroll-smooth">
         <Content
           go={go}
           setGo={setGo}

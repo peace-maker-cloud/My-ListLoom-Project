@@ -1,6 +1,6 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { openCalendar } from "./calendar components/opencalendar";
+import { openCalendar } from "../calendar components/opencalendar";
 
 export const Calendar = ({
   currentMonth,
@@ -10,6 +10,7 @@ export const Calendar = ({
   setSelectDate,
   setCal,
   setSearch,
+  setSearchList,
 }) => {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
 
@@ -37,7 +38,7 @@ export const Calendar = ({
 
   return (
     <div>
-      <div className=" whole calendar flex flex-col gap-5 justify-between">
+      <div className=" whole calendar flex flex-col gap-3 justify-between">
         <div className="month year next prev move flex justify-around">
           <button className="text-xl font-semibold">
             {monthList[today.month()]} - {today.year()}

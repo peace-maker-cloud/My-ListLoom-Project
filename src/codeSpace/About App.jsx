@@ -34,7 +34,7 @@ export const AboutApp = ({ setHome, setAction }) => {
   };
 
   return (
-    <div className="">
+    <div className="p-4">
       <div>
         <h1>About the App...</h1>
       </div>
