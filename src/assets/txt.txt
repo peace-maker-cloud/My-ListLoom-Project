@@ -11,17 +11,8 @@ Pm_2305
 email validate
 ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
 
+<i class="uil uil-edit"></i>
 
-https://lisloommv.onrender.com/users
+<i class="uil uil-save"></i>
 
-
-
-{userTask.filter(
-          (item) =>
-            dayjs(item.date).format("YYYY-MM-DD") ===
-            selectDate.format("YYYY-MM-DD")
-        )}
-
-        userTask.filter((item) =>
-                  item.work.toLowerCase().includes(search.toLowerCase())
-                )
+<i class="uil uil-check"></i>

@@ -71,12 +71,12 @@ export const Mainpage = ({
                 submitList={submitList}
               />
             </div>
-            <div className=" flex p-1 h-fit">
+            <div className=" flex gap-1 p-1 h-fit items-center">
               <i
                 onClick={() => {
                   SetLCal("");
                 }}
-                className="uil uil-calendar-alt text-3xl p-1 mt-2 rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
+                className="uil uil-calendar-alt text-3xl p-1  rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
               ></i>
               <Searchlist
                 searchList={searchList}
@@ -128,12 +128,12 @@ export const Mainpage = ({
                 setShow={setShow}
               />
             </div>
-            <div className=" flex p-1 h-fit">
+            <div className=" flex gap-1 p-1 h-fit items-center">
               <i
                 onClick={() => {
                   setCal("");
                 }}
-                className="uil uil-calendar-alt text-3xl p-1 mt-2 rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
+                className="uil uil-calendar-alt text-3xl p-1 rounded-xl text-black text-center w-[13%] h-[20%] bg-white shadow-inner shadow-blue-700 transition-all"
               ></i>
 
               <SearchBar search={search} setSearch={setSearch} />

@@ -78,7 +78,7 @@ export const AppUI = ({
       if (logged === "Signed In") {
         homeSign("/mainpage");
       } else {
-        homeSign("sign-login");
+        homeSign("/sign-login");
         setCount(0);
         setShowMessage(false);
       }
@@ -238,7 +238,7 @@ export const AppUI = ({
             }
           />
           <Route
-            path="/mainpage/*"
+            path="/mainpage"
             element={
               <Mainpage
                 go={go}

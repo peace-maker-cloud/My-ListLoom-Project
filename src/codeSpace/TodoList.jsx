@@ -429,6 +429,11 @@ export const Todolist = () => {
   }
   // List process
 
+  const [editor, setEditor] = useState([]);
+  // const lstID = editor.id;
+  // const header = editor.heading;
+  // const paragraph = editor.para;
+  const saveList = (lstID, header, paragraph) => {};
   const deleteList = () => {};
 
   // *******************************************************/
@@ -506,7 +511,7 @@ export const Todolist = () => {
   const [today, setToday] = useState(currentMonth);
   const [selectDate, setSelectDate] = useState(currentMonth);
 
-  // console.log(userList);
+  // console.log(today.format("DD-MM-YYYY"), selectDate);
   //
   return (
     <div className="mx-auto h-screen bg-gray-200 rounded-md outline-none">
