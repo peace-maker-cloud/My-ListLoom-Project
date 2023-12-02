@@ -35,14 +35,32 @@
         // Check if the screen width is below the threshold
         if (screenWidth > mobileWidthThreshold) {
           // Display an alert
-          // alert(
-          //   "It's only for mobile devices, so use them for better experience..Thank you."
-          // );
-          // setTimeout(() => {
-          //   checkScreenWidth();
-          // }, 5000);
+          alert(
+            "It's only for mobile devices, so use them for better experience..Thank you."
+          );
+          setTimeout(() => {
+            checkScreenWidth();
+          }, 5000);
         }
       }
+    </script>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
     </script>
     <script type="module" crossorigin src="/My-ListLoom-Project/assets/index-16be6c8b.js"></script>
     <link rel="stylesheet" href="/My-ListLoom-Project/assets/index-19351624.css">
