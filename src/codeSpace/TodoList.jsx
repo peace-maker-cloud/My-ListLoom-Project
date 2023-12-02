@@ -117,6 +117,7 @@ export const Todolist = () => {
             setCredentials("");
             window.location.reload();
             setHome(false);
+            setAction("Sign In");
           } else {
             setCredentials(`${username} is already registered.`);
             setPassword("");
@@ -242,6 +243,7 @@ export const Todolist = () => {
         uptLogOut(matchedUser.id);
         setUsername("");
         setPassword("");
+        setFullName("");
       } else {
         console.log("username not found");
       }
@@ -273,7 +275,7 @@ export const Todolist = () => {
   // Task work Process
 
   const addItems = async (username, work) => {
-    if (action === "Sign In") {
+    if (action === "Sign In" || action === "") {
       // Entry timings
       const data = dayjs();
 
@@ -376,7 +378,7 @@ export const Todolist = () => {
   // List work process
 
   const addListItems = async (username, heading, newWork) => {
-    if (action === "Sign In") {
+    if (action === "Sign In" || action === "") {
       // Entry timings
       const data = dayjs();
       const matchedUser = lists.find((user) => user.username === username);
@@ -391,6 +393,7 @@ export const Todolist = () => {
             newWork,
             date: data.format("DD-MM-YYYY"),
           };
+          // console.log(heading, newWork);
           const taskLists = [...userList, addNew];
           const listItems = lists.map((item) =>
             item.id === ID ? { ...item, lists: taskLists } : item
@@ -409,12 +412,12 @@ export const Todolist = () => {
           const result = await Apirequest(urlId, uptOpt);
           if (result) setFetcherr(result);
         }
+
+        setNewPara("");
+        setNewList("");
       } else {
         console.log("No user found");
       }
-
-      setNewPara("");
-      setNewList("");
     }
   };
 
@@ -430,19 +433,47 @@ export const Todolist = () => {
   // List process
 
   const [editor, setEditor] = useState([]);
-  // const lstID = editor.id;
-  // const header = editor.heading;
-  // const paragraph = editor.para;
-  const saveList = (lstID, header, paragraph) => {};
-  const deleteList = () => {};
 
+  editor;
+  setEditor;
+  const saveList = async (lstID, header, paragraph) => {
+    //work starts
+    const ID = matchedUser.id;
+
+    const listParas = userList.map((item) =>
+      item.id === lstID
+        ? { ...item, heading: header, newWork: paragraph }
+        : item
+    );
+    const listItems = lists.map((item) =>
+      item.id === ID ? { ...item, lists: listParas } : item
+    );
+    setLists(listItems);
+
+    const upList = listItems.filter((item) => item.id === ID);
+
+    // console.log(upList);
+
+    const uptItem = listItems.filter((item) => item.id === ID);
+    const uptOpt = {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ lists: uptItem[0].lists }),
+    };
+    const urlId = `${API_URL}/${ID}`;
+    const result = await Apirequest(urlId, uptOpt);
+    if (result) setFetcherr(result);
+  };
+  const deleteList = async () => {};
+
+  // console.log(userList);
   // *******************************************************/
 
   const submitList = (e) => {
     e.preventDefault();
     addListItems(username, newPara, newList);
-    setNewPara("");
-    setNewList("");
   };
 
   // *******************************************************/
@@ -586,6 +617,9 @@ export const Todolist = () => {
         searchList={searchList}
         setSearchList={setSearchList}
         submitList={submitList}
+        editor={editor}
+        setEditor={setEditor}
+        saveList={saveList}
         deleteList={deleteList}
       />
     </div>

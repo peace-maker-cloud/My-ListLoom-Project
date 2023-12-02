@@ -42,6 +42,9 @@ export const Mainpage = ({
   searchList,
   setSearchList,
   submitList,
+  editor,
+  setEditor,
+  saveList,
   deleteList,
 }) => {
   return (
@@ -116,7 +119,7 @@ export const Mainpage = ({
               <button>Add new Task</button>
             </div>
             <div
-              className={`md:top-[15%] top-[10%] md:left-[20%] left-[5%] absolute md:w-[30%] w-[90%] md:h-[8%] h-[10%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
+              className={`top-[13%] md:left-[20%] left-[5%] absolute md:w-[30%] w-[92%] md:h-[8%] h-[15%] p-2 bg-slate-200 mx-auto pt-7 rounded-md ${
                 show === "hidden" ? "hidden" : ""
               }`}
             >
@@ -181,6 +184,9 @@ export const Mainpage = ({
           searchList={searchList}
           setSearchList={setSearchList}
           submitList={submitList}
+          editor={editor}
+          setEditor={setEditor}
+          saveList={saveList}
           deleteList={deleteList}
         />
       </div>

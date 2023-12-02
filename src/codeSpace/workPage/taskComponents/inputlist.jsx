@@ -17,7 +17,7 @@ export const Inputlist = ({
           onClick={() => {
             setShow("hidden");
           }}
-          className="close text-3xl absolute top-[10%] left-[92%] uil uil-times-square hover:text-red-400"
+          className="close text-3xl absolute top-[1%] left-[90%] uil uil-times-square hover:text-red-400"
         ></i>
       </div>
       <form onSubmit={submitted} className="w-[90%] flex p-1 border-b-2">

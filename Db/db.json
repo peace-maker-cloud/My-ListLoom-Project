@@ -5,24 +5,30 @@
       "username": "pm_2305",
       "fullName": "peace maker",
       "password": "Pm@2305.",
-      "status": "Signed In",
+      "status": "Signed Out",
       "lists": [
         {
           "id": 1,
-          "heading": "Listwork",
-          "newWork": "Listwork started on 1-12-2023. i hope everything will go well.",
+          "heading": "Listwork done?",
+          "newWork": "Listwork started on 1-12-2023. i hope everything will go well \ni guess is it done....",
           "date": "01-12-2023"
         },
         {
           "id": 2,
-          "heading": "Is it done",
-          "newWork": "Yes the listwork part is done still some pending is there...",
+          "heading": "Is it done or not",
+          "newWork": "Yes Now the listwork part is done complelety still some test is going on...",
           "date": "01-12-2023"
         },
         {
           "id": 3,
           "heading": "List work ",
           "newWork": "New code updated on 2 dec 2023",
+          "date": "02-12-2023"
+        },
+        {
+          "id": 4,
+          "heading": "Final part",
+          "newWork": "Yes let's ready for some styles",
           "date": "02-12-2023"
         }
       ],
@@ -50,6 +56,12 @@
           "work": "new code updated",
           "done": false,
           "date": "02-12-2023"
+        },
+        {
+          "id": 5,
+          "work": "New work started",
+          "done": false,
+          "date": "02-12-2023"
         }
       ]
     },
@@ -68,6 +80,24 @@
       "fullName": "VIjayalakshmi Ravi",
       "password": "Viji@1977.",
       "status": "Signed Out",
+      "lists": [],
+      "tasks": []
+    },
+    {
+      "id": 4,
+      "username": "rv_0305",
+      "fullName": "fhsfhsgh",
+      "password": "Wq@23764.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": []
+    },
+    {
+      "id": 5,
+      "username": "ap_2705",
+      "fullName": "Arun Prasath",
+      "password": "Ap@2705.",
+      "status": "Signed In",
       "lists": [],
       "tasks": []
     }

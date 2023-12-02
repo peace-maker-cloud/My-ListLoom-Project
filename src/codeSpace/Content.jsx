@@ -21,6 +21,9 @@ export const Content = ({
   searchList,
   setSearchList,
   submitList,
+  editor,
+  setEditor,
+  saveList,
   deleteList,
 }) => {
   return (
@@ -31,6 +34,13 @@ export const Content = ({
             userList={userList}
             fetchErr={fetchErr}
             isLoading={isLoading}
+            newList={newList}
+            setNewList={setNewList}
+            newPara={newPara}
+            setNewPara={setNewPara}
+            editor={editor}
+            setEditor={setEditor}
+            saveList={saveList}
             deleteList={deleteList}
           />
         </>

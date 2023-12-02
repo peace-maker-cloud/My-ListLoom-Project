@@ -67,6 +67,9 @@ export const AppUI = ({
   searchList,
   setSearchList,
   submitList,
+  editor,
+  setEditor,
+  saveList,
   deleteList,
 }) => {
   // codeSpace
@@ -154,13 +157,13 @@ export const AppUI = ({
                       setVisible(false);
                     }}
                   >
-                    <p className="relative top-2 text-4xl text-center">
+                    <p className="relative top-1 text-4xl text-center">
                       {firstLetter.toUpperCase()}
                     </p>
                     {logged === "Signed In" ? (
                       <div
                         id="profile"
-                        className={`absolute md:top-[12%] top-[7%] md:left-[72%] left-[70%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
+                        className={`absolute md:top-[12%] top-[7%] left-[65%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
                           visible ? "" : "hidden"
                         }`}
                       >
@@ -199,7 +202,13 @@ export const AppUI = ({
         } `}
       >
         {showMessage && (
-          <div className="absolute z-20 p-2 text-center left-[15%] bg-white rounded-md w-3/4 opacity-80 ">
+          <div className="absolute z-20 p-4 text-center left-[15%] bg-white rounded-md w-3/4 opacity-80 ">
+            <i
+              onClick={() => {
+                setShowMessage(false);
+              }}
+              className="uil uil-times transition-all absolute top-[1%] left-[90%] text-2xl"
+            ></i>
             <p>Sorry for the delay issue. Please click Log Out. Thank you!</p>
           </div>
         )}
@@ -274,6 +283,9 @@ export const AppUI = ({
                 searchList={searchList}
                 setSearchList={setSearchList}
                 submitList={submitList}
+                editor={editor}
+                setEditor={setEditor}
+                saveList={saveList}
                 deleteList={deleteList}
               />
             }
