@@ -130,68 +130,64 @@ export const AppUI = ({
             />
           )}
 
-          {home ? (
-            ""
-          ) : (
-            <>
-              <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
-                {logged === "Signed Out" ? (
-                  "HI"
-                ) : (
-                  <>
-                    {greet}
-                    <br />
-                    {fullName}
-                  </>
-                )}
-              </h1>
-              <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
-                {logged === "Signed Out" ? (
-                  <img className="sign_in_up cursor-auto" src={login} alt="" />
-                ) : (
-                  <div
-                    onMouseOver={() => {
-                      setVisible(true);
-                    }}
-                    onMouseLeave={() => {
-                      setVisible(false);
-                    }}
-                  >
-                    <p className="relative top-1 text-4xl text-center">
-                      {firstLetter.toUpperCase()}
-                    </p>
-                    {logged === "Signed In" ? (
-                      <div
-                        id="profile"
-                        className={`absolute md:top-[12%] top-[7%] left-[65%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
-                          visible ? "" : "hidden"
-                        }`}
+          <>
+            <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
+              {logged === "Signed Out" ? (
+                "HI"
+              ) : (
+                <>
+                  {greet}
+                  <br />
+                  {fullName}
+                </>
+              )}
+            </h1>
+            <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
+              {logged === "Signed Out" ? (
+                <img className="sign_in_up cursor-auto" src={login} alt="" />
+              ) : (
+                <div
+                  onMouseOver={() => {
+                    setVisible(true);
+                  }}
+                  onMouseLeave={() => {
+                    setVisible(false);
+                  }}
+                >
+                  <p className="relative top-0 text-5xl text-center">
+                    {firstLetter.toUpperCase()}
+                  </p>
+                  {logged === "Signed In" ? (
+                    <div
+                      id="profile"
+                      className={`absolute md:top-[12%] top-[7%] left-[65%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
+                        visible ? "" : "hidden"
+                      }`}
+                    >
+                      <p className="text-xl border-b-2 border-b-slate-300">
+                        {username}
+                      </p>
+                      <p
+                        onClick={() => {
+                          handleLogout(username);
+                          setVisible(false);
+                          setAction("Sign In");
+                          setShow("hidden");
+                          setCount(count + 1);
+                          LogOutMsg();
+                        }}
+                        className="text-xl border-b-2 border-b-slate-300 hover:text-sky-500"
                       >
-                        <p className="text-xl border-b-2 border-b-slate-300">
-                          {username}
-                        </p>
-                        <p
-                          onClick={() => {
-                            handleLogout(username);
-                            setVisible(false);
-                            setAction("Sign In");
-                            setShow("hidden");
-                            setCount(count + 1);
-                            LogOutMsg();
-                          }}
-                          className="text-xl border-b-2 border-b-slate-300 hover:text-sky-500"
-                        >
-                          Log Out
-                        </p>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                )}
-              </div>
-            </>
-          )}
+                        Log Out
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              )}
+            </div>
+          </>
         </div>
       </div>
 
@@ -201,6 +197,19 @@ export const AppUI = ({
           logged === "Signed Out" ? "min-h-[88%]" : "min-h-[75%]"
         } `}
       >
+        {home ? (
+          <div className="absolute w-[98%] h-[80%] bg-white opacity-80 text-opacity-100">
+            <i
+              onClick={() => {
+                setHome(false);
+              }}
+              className="close text-3xl absolute top-[1%] left-[90%] uil uil-times hover:text-red-400"
+            ></i>
+            <AboutApp />
+          </div>
+        ) : (
+          ""
+        )}
         {showMessage && (
           <div className="absolute z-20 p-4 text-center left-[15%] bg-white rounded-md w-3/4 opacity-80 ">
             <i
@@ -214,14 +223,38 @@ export const AppUI = ({
         )}
         <Routes>
           <Route
-            path="*"
-            element={<AboutApp setHome={setHome} setAction={setAction} />}
+            path="/"
+            element={
+              <SignLogiIn
+                action={action}
+                setAction={setAction}
+                logged={logged}
+                setLogged={setLogged}
+                fullName={fullName}
+                setFullName={setFullName}
+                firstLetter={firstLetter}
+                username={username}
+                setUsername={setUsername}
+                password={password}
+                setPassword={setPassword}
+                handleSubmit={handleSubmit}
+                handleLogin={handleLogin}
+                credentials={credentials}
+                setCredentials={setCredentials}
+                uservalidate={uservalidate}
+                passvalidate={passvalidate}
+                namevalidate={namevalidate}
+                setUservalidate={setUservalidate}
+                setPassvalidate={setPassvalidate}
+                setNamevalidate={setNamevalidate}
+              />
+            }
+            index
           />
           <Route
             path="/sign-login"
             element={
               <SignLogiIn
-                setHome={setHome}
                 action={action}
                 setAction={setAction}
                 logged={logged}

@@ -97,9 +97,23 @@
       "username": "ap_2705",
       "fullName": "Arun Prasath",
       "password": "Ap@2705.",
-      "status": "Signed In",
-      "lists": [],
-      "tasks": []
+      "status": "Signed Out",
+      "lists": [
+        {
+          "id": 1,
+          "heading": "Introduction about me",
+          "newWork": "Hi my name is..... Nice to meet you",
+          "date": "02-12-2023"
+        }
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "work": "Final load",
+          "done": false,
+          "date": "02-12-2023"
+        }
+      ]
     }
   ]
 }

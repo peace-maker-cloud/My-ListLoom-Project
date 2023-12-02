@@ -176,7 +176,6 @@ export const SignLogiIn = ({
             onClick={() => {
               handleSubmit({ fullName, username, password });
               handleLogin(username, password);
-              setHome(false);
             }}
           >
             {action}

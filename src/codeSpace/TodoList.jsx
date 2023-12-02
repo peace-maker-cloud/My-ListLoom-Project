@@ -8,7 +8,7 @@ export const Todolist = () => {
 
   // App Introduction
 
-  const [home, setHome] = useState(true);
+  const [home, setHome] = useState(false);
 
   // Listing the task
   const [lists, setLists] = useState([]);
@@ -18,7 +18,7 @@ export const Todolist = () => {
   // for loading process
   const [isLoading, setIsloading] = useState(true);
   // For Sign in and Sign out process
-  const [action, setAction] = useState("");
+  const [action, setAction] = useState("Sign In");
   // Logged in process
   const [logged, setLogged] = useState("Signed Out");
   // for Profile credentials
@@ -86,7 +86,6 @@ export const Todolist = () => {
       setFirstLetter(parsedUser.fullName.charAt(0));
       setFullName(parsedUser.fullName);
       setUsername(parsedUser.username);
-      setHome(false);
     }
 
     fetchData();
@@ -116,7 +115,6 @@ export const Todolist = () => {
             setPassvalidate("");
             setCredentials("");
             window.location.reload();
-            setHome(false);
             setAction("Sign In");
           } else {
             setCredentials(`${username} is already registered.`);
@@ -190,7 +188,6 @@ export const Todolist = () => {
           logUpt(matchedUser.id);
           setUsername(matchedUser.username);
           setCredentials("");
-          setHome(false);
 
           // Store user in session storage
           const userToStore = {

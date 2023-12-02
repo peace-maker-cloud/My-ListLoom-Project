@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const AboutApp = ({ setHome, setAction }) => {
+export const AboutApp = () => {
   const carouselContent = [
     {
       title: "Mobile-First Task Management",
@@ -47,34 +47,6 @@ export const AboutApp = ({ setHome, setAction }) => {
             </div>
           ))}
         </Slider>
-      </div>
-      <div className="signlogin text-center mt-2">
-        <h1>
-          Would you like to <br />
-          <Link
-            onClick={() => {
-              setAction("Sign Up");
-              setHome(false);
-            }}
-            className="text-xl text-indigo-600 font-serif"
-            to="/sign-login"
-          >
-            Sign Up
-          </Link>
-          <br />
-          or
-          <br />
-          <Link
-            onClick={() => {
-              setAction("Sign In");
-              setHome(false);
-            }}
-            className="text-xl text-indigo-600 font-serif"
-            to="/sign-login"
-          >
-            Sign In
-          </Link>
-        </h1>
       </div>
     </div>
   );
