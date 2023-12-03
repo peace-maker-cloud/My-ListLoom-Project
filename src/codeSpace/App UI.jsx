@@ -74,21 +74,12 @@ export const AppUI = ({
 }) => {
   // codeSpace
 
-  const homeSign = useNavigate();
-
   useEffect(() => {
-    if (!home) {
-      if (logged === "Signed In") {
-        homeSign("/mainpage");
-      } else {
-        homeSign("/sign-login");
-        setCount(0);
-        setShowMessage(false);
-      }
-    } else {
-      homeSign("/");
+    if (logged === "Signed Out") {
+      setCount(0);
+      setShowMessage(false);
     }
-  }, [logged, homeSign]);
+  }, [logged]);
 
   const [count, setCount] = useState(0);
   // console.log(count);
@@ -113,15 +104,14 @@ export const AppUI = ({
       <div className="header ">
         <div className="navbar flex justify-around border-b-2">
           {logged === "Signed Out" ? (
-            <Link
+            <div
               onClick={() => {
                 setHome(true);
               }}
               className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
-              to="/"
             >
               <img src={listloom} alt="listloom png" />
-            </Link>
+            </div>
           ) : (
             <img
               className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2"
@@ -221,133 +211,95 @@ export const AppUI = ({
             <p>Sorry for the delay issue. Please click Log Out. Thank you!</p>
           </div>
         )}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SignLogiIn
-                action={action}
-                setAction={setAction}
-                logged={logged}
-                setLogged={setLogged}
-                fullName={fullName}
-                setFullName={setFullName}
-                firstLetter={firstLetter}
-                username={username}
-                setUsername={setUsername}
-                password={password}
-                setPassword={setPassword}
-                handleSubmit={handleSubmit}
-                handleLogin={handleLogin}
-                credentials={credentials}
-                setCredentials={setCredentials}
-                uservalidate={uservalidate}
-                passvalidate={passvalidate}
-                namevalidate={namevalidate}
-                setUservalidate={setUservalidate}
-                setPassvalidate={setPassvalidate}
-                setNamevalidate={setNamevalidate}
-              />
-            }
-            index
-          />
-          <Route
-            path="/sign-login"
-            element={
-              <SignLogiIn
-                action={action}
-                setAction={setAction}
-                logged={logged}
-                setLogged={setLogged}
-                fullName={fullName}
-                setFullName={setFullName}
-                firstLetter={firstLetter}
-                username={username}
-                setUsername={setUsername}
-                password={password}
-                setPassword={setPassword}
-                handleSubmit={handleSubmit}
-                handleLogin={handleLogin}
-                credentials={credentials}
-                setCredentials={setCredentials}
-                uservalidate={uservalidate}
-                passvalidate={passvalidate}
-                namevalidate={namevalidate}
-                setUservalidate={setUservalidate}
-                setPassvalidate={setPassvalidate}
-                setNamevalidate={setNamevalidate}
-              />
-            }
-          />
-          <Route
-            path="/mainpage"
-            element={
-              <Mainpage
-                go={go}
-                setGo={setGo}
-                show={show}
-                setShow={setShow}
-                search={search}
-                setSearch={setSearch}
-                newitem={newitem}
-                setNewitem={setNewitem}
-                submitted={submitted}
-                currentMonth={currentMonth}
-                today={today}
-                setToday={setToday}
-                selectDate={selectDate}
-                setSelectDate={setSelectDate}
-                Cal={Cal}
-                setCal={setCal}
-                userTask={userTask}
-                fetchErr={fetchErr}
-                isLoading={isLoading}
-                checks={checks}
-                deletes={deletes}
-                lCal={lCal}
-                SetLCal={SetLCal}
-                userList={userList}
-                ipShow={ipShow}
-                setIpShow={setIpShow}
-                newList={newList}
-                setNewList={setNewList}
-                newPara={newPara}
-                setNewPara={setNewPara}
-                searchList={searchList}
-                setSearchList={setSearchList}
-                submitList={submitList}
-                editor={editor}
-                setEditor={setEditor}
-                saveList={saveList}
-                deleteList={deleteList}
-              />
-            }
-          />
-        </Routes>
+        <>
+          {logged === "Signed Out" ? (
+            <SignLogiIn
+              action={action}
+              setAction={setAction}
+              logged={logged}
+              setLogged={setLogged}
+              fullName={fullName}
+              setFullName={setFullName}
+              firstLetter={firstLetter}
+              username={username}
+              setUsername={setUsername}
+              password={password}
+              setPassword={setPassword}
+              handleSubmit={handleSubmit}
+              handleLogin={handleLogin}
+              credentials={credentials}
+              setCredentials={setCredentials}
+              uservalidate={uservalidate}
+              passvalidate={passvalidate}
+              namevalidate={namevalidate}
+              setUservalidate={setUservalidate}
+              setPassvalidate={setPassvalidate}
+              setNamevalidate={setNamevalidate}
+            />
+          ) : (
+            <Mainpage
+              go={go}
+              setGo={setGo}
+              show={show}
+              setShow={setShow}
+              search={search}
+              setSearch={setSearch}
+              newitem={newitem}
+              setNewitem={setNewitem}
+              submitted={submitted}
+              currentMonth={currentMonth}
+              today={today}
+              setToday={setToday}
+              selectDate={selectDate}
+              setSelectDate={setSelectDate}
+              Cal={Cal}
+              setCal={setCal}
+              userTask={userTask}
+              fetchErr={fetchErr}
+              isLoading={isLoading}
+              checks={checks}
+              deletes={deletes}
+              lCal={lCal}
+              SetLCal={SetLCal}
+              userList={userList}
+              ipShow={ipShow}
+              setIpShow={setIpShow}
+              newList={newList}
+              setNewList={setNewList}
+              newPara={newPara}
+              setNewPara={setNewPara}
+              searchList={searchList}
+              setSearchList={setSearchList}
+              submitList={submitList}
+              editor={editor}
+              setEditor={setEditor}
+              saveList={saveList}
+              deleteList={deleteList}
+            />
+          )}
+        </>
       </div>
 
       {/* Be Careful with Content div */}
       {logged === "Signed In" && !home ? (
         <div className="footer flex gap-0 justify-center border-t-2 p-2">
-          <Link
-            to="/listwork"
+          <button
             className="text-center bg-transparent border-r-2 border-l-2 border-l-slate-300 rounded-l-md border-r-slate-300  p-1 px-3  text-2xl text-black hover:text-white w-full"
             onClick={() => {
               setGo("List");
             }}
           >
             List
-          </Link>
+          </button>
 
-          <Link
-            to="/taskwork"
+          <button
             className="text-center bg-transparent border-r-2 border-l-2 border-l-slate-300  border-r-slate-300 rounded-r-md p-1 px-3 text-2xl text-black hover:text-white w-full"
             onClick={() => {
               setGo("Task");
             }}
           >
             Task
-          </Link>
+          </button>
         </div>
       ) : (
         ""

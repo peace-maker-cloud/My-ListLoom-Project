@@ -30,6 +30,24 @@ export const SignLogiIn = ({
     setShowPassword(!showPassword);
   };
 
+  const [count, setCount] = useState(0);
+  // console.log(count);
+
+  // Delay visibility
+
+  const [showMessage, setShowMessage] = useState(false);
+
+  const delayMsg = () => {
+    if (count === 1) {
+      setShowMessage(true);
+    }
+
+    if (logged === "Signed In") {
+      setCount(0);
+    }
+    // console.log(count, showMessage);
+  };
+
   return (
     <div>
       <div className="p-4 mt-20 md:mx-auto bg-slate-200 rounded-md md:w-2/5 text-center h-[75%] flex flex-col justify-between">
@@ -66,9 +84,6 @@ export const SignLogiIn = ({
               onMouseMove={() => {
                 setCredentials("");
                 setAction("Sign In");
-                setUsername("");
-                setPassword("");
-                setFullName("");
                 setUservalidate("");
                 setPassvalidate("");
                 setNamevalidate("");
@@ -174,13 +189,29 @@ export const SignLogiIn = ({
           <button
             className="text-2xl bg-blue-400 outline-none p-2 hover:shadow-md hover:shadow-neutral-400 transistion duration-300 rounded-md text-white"
             onClick={() => {
-              handleSubmit({ fullName, username, password });
-              handleLogin(username, password);
+              {
+                action === "Sign Up"
+                  ? handleSubmit({ fullName, username, password })
+                  : handleLogin(username, password);
+                setCount(count + 1);
+                delayMsg();
+              }
             }}
           >
             {action}
           </button>
         </div>
+        {showMessage && (
+          <div className="absolute z-20 p-4 text-center top-[76%] left-[15%] bg-white rounded-md w-3/4 opacity-80 transition-all">
+            <i
+              onClick={() => {
+                setShowMessage(false);
+              }}
+              className="uil uil-times transition-all absolute top-[1%] left-[90%] text-2xl"
+            ></i>
+            <p>Sorry for the delay issue. Please click Sign In. Thank you!</p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -89,7 +89,7 @@ export const Todolist = () => {
     }
 
     fetchData();
-  }, []);
+  }, [fullName, action]);
 
   // Code Space
   // Login Submit Process
@@ -109,12 +109,12 @@ export const Todolist = () => {
               user.password === password
           );
           if (!searchUser) {
+            console.log(fullName, username, password);
             addUser(fullName, username, password);
             setNamevalidate("");
             setUservalidate("");
             setPassvalidate("");
             setCredentials("");
-            window.location.reload();
             setAction("Sign In");
           } else {
             setCredentials(`${username} is already registered.`);
@@ -138,7 +138,7 @@ export const Todolist = () => {
       setFullName("");
     }
   };
-
+  // console.log(fullName, username, password);
   // adding login values
 
   const addUser = async (fullName, username, password) => {
@@ -163,7 +163,7 @@ export const Todolist = () => {
       };
 
       const result = await Apirequest(API_URL, logPostOpt);
-
+      window.location.reload();
       if (result) setFetcherr(result);
     } catch (error) {
       console.error("Error adding user:", error);

@@ -63,13 +63,13 @@ export const ListTheItems = ({
                 </ul>
               </>
             ) : (
-              <p className="text-2xl text-center p-5">You have an Empty list</p>
+              <p className="text-2xl text-center p-5">You have an Empty Task</p>
             )}
           </div>
         </>
       )}
       {/* Separate the tasks doneTasks */}
-      <hr className="bg-white h-1 rounded-3xl" />
+      {doneTasks.length ? <hr className="bg-white h-1 rounded-3xl" /> : <></>}
 
       {!fetchErr && !isLoading && (
         <>
@@ -114,9 +114,10 @@ export const ListTheItems = ({
                 </ul>
               </>
             ) : (
-              <p className="text-2xl text-center p-5">
-                You have an Empty Completed Task.
-              </p>
+              // <p className="text-2xl text-center p-5">
+              //   You have an Empty Completed Task.
+              // </p>
+              <></>
             )}
           </div>
         </>
