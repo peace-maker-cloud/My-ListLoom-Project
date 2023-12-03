@@ -4,7 +4,7 @@ import { AppUI } from "./App UI";
 import Apirequest from "./ApiRequest";
 import dayjs from "dayjs";
 export const Todolist = () => {
-  const API_URL = "https://lisloommv.onrender.com/users";
+  const API_URL = "http://localhost:3001/users";
 
   // App Introduction
 
@@ -136,6 +136,9 @@ export const Todolist = () => {
     } else {
       setCredentials("Please Fill all the details.");
       setFullName("");
+      setNamevalidate("");
+      setUservalidate("");
+      setPassvalidate("");
     }
   };
   // console.log(fullName, username, password);

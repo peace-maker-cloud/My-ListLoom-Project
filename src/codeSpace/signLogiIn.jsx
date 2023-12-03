@@ -38,7 +38,12 @@ export const SignLogiIn = ({
   const [showMessage, setShowMessage] = useState(false);
 
   const delayMsg = () => {
-    if (count === 1) {
+    if (
+      count === 1 &&
+      username === null &&
+      fullName === null &&
+      password === null
+    ) {
       setShowMessage(true);
     }
 

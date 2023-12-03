@@ -108,7 +108,7 @@ export const AppUI = ({
               onClick={() => {
                 setHome(true);
               }}
-              className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
+              className="w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
             >
               <img src={listloom} alt="listloom png" />
             </div>
@@ -121,7 +121,7 @@ export const AppUI = ({
           )}
 
           <>
-            <h1 className="greeting text-white md:text-xl md:font-bold font-semibold my-auto text-center">
+            <h1 className="greeting text-white font-semibold my-auto text-center iphoneSE:text-xl">
               {logged === "Signed Out" ? (
                 "HI"
               ) : (
@@ -132,25 +132,28 @@ export const AppUI = ({
                 </>
               )}
             </h1>
-            <div className="bg-white md:w-[10%] w-[15%]  rounded-full cursor-pointer">
+            <div className="bg-white w-[15%] rounded-full cursor-pointer ">
               {logged === "Signed Out" ? (
                 <img className="sign_in_up cursor-auto" src={login} alt="" />
               ) : (
                 <div
                   onMouseOver={() => {
                     setVisible(true);
+                    setTimeout(() => {
+                      setVisible(false);
+                    }, 3000);
                   }}
                   onMouseLeave={() => {
                     setVisible(false);
                   }}
                 >
-                  <p className="relative top-0 text-5xl text-center">
+                  <p className="relative top-0 text-5xl text-center iphoneSE:left-[2%] iphoneSE:text-5xl iphoneSE:top-1 oneSamPixel:text-5xl oneSamPixel:top-1">
                     {firstLetter.toUpperCase()}
                   </p>
                   {logged === "Signed In" ? (
                     <div
                       id="profile"
-                      className={`absolute md:top-[12%] top-[7%] left-[65%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
+                      className={`absolute top-[9%] left-[65%] flex flex-col gap-2 bg-slate-100 p-3 px-6 rounded-md outline-none z-50 ${
                         visible ? "" : "hidden"
                       }`}
                     >
@@ -284,7 +287,9 @@ export const AppUI = ({
       {logged === "Signed In" && !home ? (
         <div className="footer flex gap-0 justify-center border-t-2 p-2">
           <button
-            className="text-center bg-transparent border-r-2 border-l-2 border-l-slate-300 rounded-l-md border-r-slate-300  p-1 px-3  text-2xl text-black hover:text-white w-full"
+            className={`text-center bg-transparent border-r-2 border-l-2 border-l-slate-300 rounded-l-md border-r-slate-300 p-1 px-3 w-full transition-all ${
+              go === "List" ? "text-white text-3xl" : "text-black text-xl"
+            }`}
             onClick={() => {
               setGo("List");
             }}
@@ -293,7 +298,9 @@ export const AppUI = ({
           </button>
 
           <button
-            className="text-center bg-transparent border-r-2 border-l-2 border-l-slate-300  border-r-slate-300 rounded-r-md p-1 px-3 text-2xl text-black hover:text-white w-full"
+            className={`text-center bg-transparent border-r-2 border-l-2 border-l-slate-300 rounded-r-md border-r-slate-300 p-1 px-3 text-2xl text-black w-full transition-all ${
+              go === "Task" ? "text-white text-3xl" : "text-black text-xl"
+            }`}
             onClick={() => {
               setGo("Task");
             }}
