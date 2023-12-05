@@ -28,7 +28,7 @@ export const InputList = ({
         >
           <div className="mx-auto w-[90%]">
             <input
-              className=" w-[60%] h-10 ml-0 p-4 bg-white text-black text-xl outline-none  border-gray-400 rounded-sm placeholder-gray-400"
+              className="header w-[95%] h-10 ml-0 p-4 bg-white text-black text-base outline-none  border-gray-400 rounded-sm placeholder-gray-400"
               type="text"
               autoFocus
               name=""
@@ -43,7 +43,7 @@ export const InputList = ({
           </div>
           <div className="flex h-[100%]">
             <textarea
-              className="paragraph w-[80%] h-[90%] p-3 bg-white text-black text-xl outline-none border-gray-400 rounded-sm placeholder-gray-400 flex flex-grow"
+              className="paragraph w-[80%] h-[90%] p-3 bg-white text-black text-base outline-none border-gray-400 rounded-sm placeholder-gray-400 flex flex-grow"
               autoFocus
               required
               ref={ipListRef}
@@ -61,6 +61,9 @@ export const InputList = ({
               <i
                 onClick={() => {
                   ipListRef.current.focus();
+                  setTimeout(() => {
+                    setIpShow("hidden");
+                  }, 1000);
                 }}
                 className="text-3xl uil uil-plus"
               ></i>

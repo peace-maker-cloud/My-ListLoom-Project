@@ -24,23 +24,23 @@ export const Listthelist = ({
   return (
     <>
       {isLoading && (
-        <p className="text-4xl text-center p-5">Loading Items...</p>
+        <p className="text-3xl text-center p-5">Loading Items...</p>
       )}
       {fetchErr && (
         <p className="text-4xl text-center p-5">{`Error : ${fetchErr} please refresh once..`}</p>
       )}
       {!fetchErr && !isLoading && (
         <>
-          <div className="pending tasks md:mx-auto mb-3 md:w-3/5 md:text-2xl text-xl p-2">
+          <div className="pending tasks mb-3 text-xl p-2">
             {userList.length ? (
               <>
                 <ul className="flex flex-col ">
                   {userList.map((item) => (
                     <li
                       key={item.id}
-                      className="flex items-center justify-between gap-6 w-full  border-b-2"
+                      className="flex items-center justify-between gap-6 w-full border-b-2"
                     >
-                      <div className="md:pt-2 pt-2 border-r-2 h-full">
+                      <div className="pt-2 border-r-2 h-full">
                         <i
                           key={item.id}
                           className="uil uil-book-open p-1 transition-all"
@@ -124,7 +124,7 @@ export const Listthelist = ({
                       </div>
                       <label
                         data-value={item.heading}
-                        className="text-xl font-semibold"
+                        className="text-base text-center"
                       >
                         {item.heading}
                       </label>
