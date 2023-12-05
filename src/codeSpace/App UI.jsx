@@ -97,7 +97,7 @@ export const AppUI = ({
 
   return (
     <div
-      className={`heading md:mx-auto md:rounded-md bg-slate-400 md:p-3 p-1 md:w-3/5 outline-none h-screen flex flex-col ${
+      className={`heading bg-slate-400 p-1 outline-none h-screen flex flex-col ${
         logged === "Signed Out" ? "justify-start" : "justify-between"
       }  gap-2`}
     >
@@ -108,13 +108,13 @@ export const AppUI = ({
               onClick={() => {
                 setHome(true);
               }}
-              className="w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
+              className="w-[25%] others:w-[30%] h-[50%] mt-2 gap-2 p-2 cursor-pointer"
             >
               <img src={listloom} alt="listloom png" />
             </div>
           ) : (
             <img
-              className="md:w-[25%] w-[30%] h-[50%] mt-2 gap-2 p-2"
+              className="w-[25%] others:w-[30%] h-[50%] mt-2 gap-2 p-2"
               src={listloom}
               alt="listloom png"
             />
@@ -147,7 +147,7 @@ export const AppUI = ({
                     setVisible(false);
                   }}
                 >
-                  <p className="relative top-0 text-5xl text-center iphoneSE:left-[2%] iphoneSE:text-5xl iphoneSE:top-1 oneSamPixel:text-5xl oneSamPixel:top-1">
+                  <p className="relative top-1 text-4xl others:text-5xl others:top-0 text-center iphoneSE:left-[2%] iphoneSE:text-5xl iphoneSE:top-1 oneSamPixel:text-5xl oneSamPixel:top-1">
                     {firstLetter.toUpperCase()}
                   </p>
                   {logged === "Signed In" ? (

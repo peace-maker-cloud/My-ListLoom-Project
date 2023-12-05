@@ -39,6 +39,9 @@ export const Inputlist = ({
           <i
             onClick={() => {
               inputRef.current.focus();
+              setTimeout(() => {
+                setShow("hidden");
+              }, 1000);
             }}
             className="text-3xl uil uil-plus"
           ></i>

@@ -379,9 +379,11 @@ export const Todolist = () => {
 
   const addListItems = async (username, heading, newWork) => {
     if (action === "Sign In" || action === "") {
+      console.log("username ", username);
       // Entry timings
       const data = dayjs();
       const matchedUser = lists.find((user) => user.username === username);
+      console.log(matchedUser);
       if (matchedUser) {
         if (username === matchedUser.username) {
           const userList = matchedUser.lists;
@@ -393,7 +395,7 @@ export const Todolist = () => {
             newWork,
             date: data.format("DD-MM-YYYY"),
           };
-          // console.log(heading, newWork);
+          console.log(heading, newWork);
           const taskLists = [...userList, addNew];
           const listItems = lists.map((item) =>
             item.id === ID ? { ...item, lists: taskLists } : item
