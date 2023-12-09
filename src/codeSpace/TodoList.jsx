@@ -1,10 +1,9 @@
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import { AppUI } from "./App UI";
 import Apirequest from "./ApiRequest";
 import dayjs from "dayjs";
 export const Todolist = () => {
-  const API_URL = "https://lisloommv.onrender.com/users";
+  const API_URL = "http://localhost:3001/users";
 
   // App Introduction
 
@@ -89,7 +88,7 @@ export const Todolist = () => {
     }
 
     fetchData();
-  }, [fullName, action]);
+  }, [logged, action]);
 
   // Code Space
   // Login Submit Process
@@ -109,13 +108,16 @@ export const Todolist = () => {
               user.password === password
           );
           if (!searchUser) {
-            console.log(fullName, username, password);
             addUser(fullName, username, password);
+            console.log(fullName, username, password);
             setNamevalidate("");
             setUservalidate("");
             setPassvalidate("");
             setCredentials("");
             setAction("Sign In");
+            setFullName("");
+            setPassword("");
+            setUsername("");
           } else {
             setCredentials(`${username} is already registered.`);
             setPassword("");
@@ -147,6 +149,7 @@ export const Todolist = () => {
   const addUser = async (fullName, username, password) => {
     try {
       const id = lists.length ? lists[lists.length - 1].id + 1 : 1;
+      console.log(id);
       const newUser = {
         id,
         username,
@@ -166,7 +169,6 @@ export const Todolist = () => {
       };
 
       const result = await Apirequest(API_URL, logPostOpt);
-      window.location.reload();
       if (result) setFetcherr(result);
     } catch (error) {
       console.error("Error adding user:", error);

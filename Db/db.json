@@ -64,56 +64,6 @@
           "date": "02-12-2023"
         }
       ]
-    },
-    {
-      "id": 2,
-      "username": "rv_0305",
-      "fullName": "Vigneshwaran Ravi",
-      "password": "rv@0305.",
-      "status": "Signed Out",
-      "lists": [],
-      "tasks": []
-    },
-    {
-      "id": 3,
-      "username": "rviji_1977",
-      "fullName": "VIjayalakshmi Ravi",
-      "password": "Viji@1977.",
-      "status": "Signed Out",
-      "lists": [],
-      "tasks": []
-    },
-    {
-      "id": 4,
-      "username": "rv_0305",
-      "fullName": "fhsfhsgh",
-      "password": "Wq@23764.",
-      "status": "Signed Out",
-      "lists": [],
-      "tasks": []
-    },
-    {
-      "id": 5,
-      "username": "ap_2705",
-      "fullName": "Arun Prasath",
-      "password": "Ap@2705.",
-      "status": "Signed Out",
-      "lists": [
-        {
-          "id": 1,
-          "heading": "Introduction about me",
-          "newWork": "Hi my name is..... Nice to meet you",
-          "date": "02-12-2023"
-        }
-      ],
-      "tasks": [
-        {
-          "id": 1,
-          "work": "Final load",
-          "done": false,
-          "date": "02-12-2023"
-        }
-      ]
     }
   ]
 }
