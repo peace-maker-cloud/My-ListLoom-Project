@@ -64,6 +64,24 @@
           "date": "02-12-2023"
         }
       ]
+    },
+    {
+      "id": 2,
+      "username": "ap_2705",
+      "fullName": "Arun Prasath",
+      "password": "Ap@2705.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": []
+    },
+    {
+      "id": 3,
+      "username": "rv_0305",
+      "fullName": "Vijiayalakshmi",
+      "password": "Rv@2305.",
+      "status": "Signed Out",
+      "lists": [],
+      "tasks": []
     }
   ]
 }

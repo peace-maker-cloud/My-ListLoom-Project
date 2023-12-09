@@ -109,7 +109,7 @@ export const Todolist = () => {
           );
           if (!searchUser) {
             addUser(fullName, username, password);
-            console.log(fullName, username, password);
+            // console.log(fullName, username, password);
             setNamevalidate("");
             setUservalidate("");
             setPassvalidate("");
@@ -149,7 +149,7 @@ export const Todolist = () => {
   const addUser = async (fullName, username, password) => {
     try {
       const id = lists.length ? lists[lists.length - 1].id + 1 : 1;
-      console.log(id);
+      // console.log(id);
       const newUser = {
         id,
         username,
